@@ -7,12 +7,11 @@ public class Organizer extends Employees {
     public Organizer() {
     }
 
-    public Organizer(double organizerSalary) {
-        this.organizerSalary = organizerSalary;
-    }
-
-    public Organizer(double organizerSalary, String name, String ID, String adress, String phoneNumber, int workedHours, String email, String[] hiredEmployees, WorkingSchedule[] workedHour) {
-        super(name, ID, adress, phoneNumber, workedHours, email, hiredEmployees, workedHour);
+    public Organizer(double organizerSalary, String name, String ID, 
+            String adress, String phoneNumber, int workedHours, String email, 
+            Employees[] hiredEmployees, WorkingSchedule[] workedHour) {
+        super(name, ID, adress, phoneNumber, workedHours, email, hiredEmployees, 
+                workedHour);
         this.organizerSalary = organizerSalary;
     }
 

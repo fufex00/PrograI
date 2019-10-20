@@ -1,6 +1,12 @@
 package prograproject;
 
-public class Administrator{
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class Administrator {
+
+    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
     private String user;
     private String password;
@@ -9,11 +15,8 @@ public class Administrator{
     }
 
     public Administrator(String user, String password) {
-        this.user = user;
-        this.password = password;
-    }
-    
-    public void editFileds() {
+        this.user = "admin";
+        this.password = "pass1";
     }
 
     /**
@@ -43,4 +46,5 @@ public class Administrator{
     public void setPassword(String password) {
         this.password = password;
     }
+
 }

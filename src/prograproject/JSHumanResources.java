@@ -44,10 +44,11 @@ public class JSHumanResources {
                 tempPassword = sc.next();
 
                 if (tempUserName.trim().equals(user.trim()) && tempPassword.trim().equals(password.trim())) {
-                    found = true;
+
                     Employees admin = new Employees();
                     admin.editFields();
                     login();
+                    found = true;
 
                 } else {
                     System.out.println("Credenciales incorrectos. Pruebe otra vez.");

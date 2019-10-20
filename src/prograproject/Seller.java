@@ -16,8 +16,11 @@ public class Seller extends Employees {
         this.quantitySold = quantitySold;
     }
 
-    public Seller(int soldProducts, int bonus, double quantitySold, String name, String ID, String adress, String phoneNumber, int workedHours, String email, String[] hiredEmployees, WorkingSchedule[] workedHour) {
-        super(name, ID, adress, phoneNumber, workedHours, email, hiredEmployees, workedHour);
+    public Seller(int soldProducts, int bonus, double quantitySold, String name,
+            String ID, String adress, String phoneNumber, int workedHours,
+            String email, Employees[] hiredEmployees, WorkingSchedule[] workedHour) {
+        super(name, ID, adress, phoneNumber, workedHours, email, hiredEmployees,
+                workedHour);
         this.soldProducts = soldProducts;
         this.bonus = bonus;
         this.quantitySold = quantitySold;
@@ -81,5 +84,5 @@ public class Seller extends Employees {
     public void setSellerSalary(double sellerSalary) {
         this.sellerSalary = sellerSalary;
     }
-    
+
 }
