@@ -4,19 +4,21 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class Administrator {
+public class Administrator extends Employees {
 
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
     private String user;
     private String password;
+    public Employees createdEmployess[] = new Employees[20];
+    public int j = 0;
 
     public Administrator() {
     }
 
     public Administrator(String user, String password) {
-        this.user = "admin";
-        this.password = "pass1";
+        this.user = user;
+        this.password = password;
     }
 
     /**
@@ -45,6 +47,115 @@ public class Administrator {
      */
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void editFields() throws IOException {
+        System.out.println("Administrador");
+        System.out.println("***********************\n");
+        System.out.println("1. Agregar nuevo Empleado");
+        System.out.println("2. Ver lista de Empleados");
+        System.out.println("n. Salir");
+        String selec = br.readLine();
+        switch (selec) {
+            case "1":
+                addNewEmployee();
+                break;
+            case "2":
+                printEmployeelist();
+                editFields();
+            case "10":
+                logOut();
+                break;
+            default:
+                throw new AssertionError();
+        }
+    }
+
+    private void addNewEmployee() throws IOException {
+        System.out.println("Modulo agregar nuevo empleado");
+        System.out.println("***********************\n");
+        System.out.println("1. Agregar un nuevo Jefe/a");
+        System.out.println("2. Agregar un nuevo Cajero/a");
+        System.out.println("3. Agregar un nuevo Miscelaneo/a");
+        System.out.println("4. Agregar un nuevo Organizador/a");
+        System.out.println("5. Agregar un nuevo Secretario/a");
+        System.out.println("6. Agregar un nuevo Vendedor/a");
+        String selec = br.readLine();
+        switch (selec) {
+            case "1":
+                createdEmployess[j] = addNewBoss();
+                j++;
+                editFields();
+                break;
+            case "2":
+                createdEmployess[j] = addNewCashier();
+                j++;
+                break;
+            case "3":
+                createdEmployess[j] = addNewBoss();
+                j++;
+                break;
+            case "4":
+                createdEmployess[j] = addNewBoss();
+                j++;
+                break;
+            case "5":
+                createdEmployess[j] = addNewBoss();
+                j++;
+                break;
+            case "6":
+                createdEmployess[j] = addNewBoss();
+                j++;
+                break;
+            default:
+                throw new AssertionError();
+        }
+    }
+
+    private Employees addNewBoss() throws IOException {
+        Employees boss = new Boss(400000);
+        System.out.println("Ingrese el nombre del nuevo Jefe");
+        String name = br.readLine();
+        boss.setName(name);
+        System.out.println("Digite el ID");
+        String id = br.readLine();
+        boss.setID(id);
+        System.out.println("Ingrese la contrasenia");
+        String pass = br.readLine();
+        boss.setPassword(pass);
+        System.out.println("Ingrese la direccion");
+        String addr = br.readLine();
+        boss.setAdress(addr);
+        System.out.println("Ingrese el numero de telefono");
+        String phoneNum = br.readLine();
+        boss.setPhoneNumber(phoneNum);
+        System.out.println("Jefe creado con exito");
+
+        return boss;
+    }
+
+    private Employees addNewCashier() {
+        return null;
+
+    }
+
+    private void printEmployeelist() throws IOException {
+        if (createdEmployess[0] == (null)) {
+            System.out.println("La lista esta vacia");
+            editFields();
+        } else {
+            for (int i = 0; i < j; i++) {
+                System.out.println("Nombre: " + createdEmployess[i].getName());
+                System.out.println("ID: " + createdEmployess[i].getID());
+                System.out.println("Direccion: " + createdEmployess[i].getAdress());
+                System.out.println("# de telefono: " + createdEmployess[i].getPhoneNumber());
+            }
+
+        }
+    }
+
+    private void logOut() {
+        System.out.println("Cerrando Sesion");
     }
 
 }

@@ -20,8 +20,9 @@ public class Employees {
     private int workedHours;
 
     private String email;
+    private String password;
 
-    private Employees[] hiredEmployees = new Employees[15];
+    public Employees[] hiredEmployees;
 
     private WorkingSchedule[] workedHour;
 
@@ -29,7 +30,7 @@ public class Employees {
     }
 
     public Employees(String name, String ID, String adress, String phoneNumber,
-            int workedHours, String email, Employees[] hiredEmployees,
+            int workedHours, String email, String password, Employees[] hiredEmployees,
             WorkingSchedule[] workedHour) {
         this.name = name;
         this.ID = ID;
@@ -37,6 +38,7 @@ public class Employees {
         this.phoneNumber = phoneNumber;
         this.workedHours = workedHours;
         this.email = email;
+        this.password = password;
         this.workedHour = workedHour;
         this.hiredEmployees = hiredEmployees;
     }
@@ -153,66 +155,12 @@ public class Employees {
         this.workedHour = workedHour;
     }
 
-    public void editFields() throws IOException {
-        System.out.println("Administrador");
-        System.out.println("**********************************");
-        System.out.println("Ingrese una opcion");
-        System.out.println("");
-        System.out.println("1. Agreagar un nuevo Jefe");
-        System.out.println("2. Ver lista de empleados");
-        int selection;
-        selection = Integer.parseInt(br.readLine());
-        switch (selection) {
-            case 1:
-                hiredEmployees[count] = createBoss();
-                count++;
-                editFields();
-                break;
-            case 2:
-                printEmployeeList();
-                editFields();
-                break;
-            default:
-                System.out.println("Esta es una seleccion incorrecta.");
-                editFields();
-                break;
-        }
-        System.out.println("**********************************");
-
+    public String getPassword() {
+        return password;
     }
 
-    public Employees createBoss() throws IOException {
-        Boss boss = new Boss();
-        System.out.println("Ingrese el nombre del nuevo Jefe");
-        String name = br.readLine();
-        boss.setName(name);
-        System.out.println("Ingrese el ID");
-        String id = br.readLine();
-        boss.setID(id);
-        System.out.println("Ingrese la direccion");
-        String addr = br.readLine();
-        boss.setAdress(addr);
-        System.out.println("Ingrese el numero de telefono");
-        String phoneNum = br.readLine();
-        boss.setPhoneNumber(phoneNum);
-        System.out.println("Ingrese el correo electronico");
-        String email = br.readLine();
-        boss.setEmail(email);
-        System.out.println("Ingrese el salario mensual");
-        int salary = Integer.parseInt(br.readLine());
-        boss.setBossSalary(salary);
-
-        return boss;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    private void printEmployeeList() {
-        System.out.println("tes");
-        for (int i = 0; i < 15; i++) {
-            System.out.println("Nombre: " + hiredEmployees[i].getName());
-            System.out.println("ID: " + hiredEmployees[i].getID());
-            System.out.println("Direccion: " + hiredEmployees[i].getAdress());
-            System.out.println("Numero de telefono: " + hiredEmployees[i].getPhoneNumber());
-        }
-        System.out.println("test1");
-    }
 }

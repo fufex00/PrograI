@@ -3,9 +3,6 @@ package prograproject;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
 
 public class JSHumanResources {
 
@@ -13,54 +10,35 @@ public class JSHumanResources {
 
     public static void main(String[] args) throws IOException {
         System.out.println("**********************************");
-        System.out.println("* Bienvenido a la Verduleria J&B *");
+        System.out.println("*   Bienvenido a la Verduleria   *");
         System.out.println("**********************************");
         System.out.println("");
         login();
 
     }
 
-    static public void login() throws IOException {
-        File loginCredentials = new File("loginData.txt");
-        String filepath = "loginData.txt";
+    public static void mainMenu() throws IOException {
+    }
 
-        System.out.println("Ingrese su ID");
-        String user = br.readLine();
-        System.out.println("Ingrese su contraseña ");
+    private static void login() throws IOException {
+        System.out.println("Ingrese su ID: ");
+        String user = br.readLine();        
+        System.out.println("Ingrese su contrasenia");                           //insertar la enie que falta
         String pass = br.readLine();
-        verifyLogin(user, pass, filepath);
-
+        
+        verifyLogin(user, pass);
     }
 
-    private static void verifyLogin(String user, String password, String filepath) throws FileNotFoundException, IOException {
-        Scanner sc = new Scanner(new File(filepath));
-        boolean found = false;
-        String tempUserName = "";
-        String tempPassword = "";
-        try {
-            while (sc.hasNext() && !found) {
-                sc.useDelimiter("[,\n]");
-                tempUserName = sc.next();
-                tempPassword = sc.next();
-
-                if (tempUserName.trim().equals(user.trim()) && tempPassword.trim().equals(password.trim())) {
-
-                    Employees admin = new Employees();
-                    admin.editFields();
-                    login();
-                    found = true;
-
-                } else {
-                    System.out.println("Credenciales incorrectos. Pruebe otra vez.");
-                    login();
-                }
-                sc.close();
-            }
-        } catch (Exception e) {
+    private static void verifyLogin(String user, String password) throws IOException {
+        
+        Administrator admin = new Administrator("admin", "pass1");
+        if ((admin.getUser().equals(user)) && (admin.getPassword().equals(password))) {
+            admin.editFields();
+            login();
         }
-    }
-
-    public void mainMenu() {
+        
+        
+        
     }
 
     public void printPositionTable() {
