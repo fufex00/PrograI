@@ -90,6 +90,7 @@ public class Administrator extends Employees {
             case "2":
                 createdEmployess[j] = addNewCashier();
                 j++;
+                editFields();
                 break;
             case "3":
                 createdEmployess[j] = addNewBoss();
@@ -134,8 +135,25 @@ public class Administrator extends Employees {
         return boss;
     }
 
-    private Employees addNewCashier() {
-        return null;
+    private Employees addNewCashier() throws IOException {
+        Employees cashier = new Cashier(360000);
+        System.out.println("Ingrese el nombre del nuevo Cajero");
+        String name = br.readLine();
+        cashier.setName(name);
+        System.out.println("Digite el ID");
+        String id = br.readLine();
+        cashier.setID(id);
+        System.out.println("Ingrese la contrasenia");
+        String pass = br.readLine();
+        cashier.setPassword(pass);
+        System.out.println("Ingrese la direccion");
+        String addr = br.readLine();
+        cashier.setAdress(addr);
+        System.out.println("Ingrese el numero de telefono");
+        String phoneNum = br.readLine();
+        cashier.setPhoneNumber(phoneNum);
+        System.out.println("Cajero/a creado/a con exito");
+        return cashier;
 
     }
 
@@ -145,10 +163,12 @@ public class Administrator extends Employees {
             editFields();
         } else {
             for (int i = 0; i < j; i++) {
+                System.out.println("Posicion : " + createdEmployess[i].getClass());
                 System.out.println("Nombre: " + createdEmployess[i].getName());
                 System.out.println("ID: " + createdEmployess[i].getID());
                 System.out.println("Direccion: " + createdEmployess[i].getAdress());
                 System.out.println("# de telefono: " + createdEmployess[i].getPhoneNumber());
+                System.out.println("***********************\n");
             }
 
         }
