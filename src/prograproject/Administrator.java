@@ -72,6 +72,7 @@ public class Administrator extends Employees {
     }
 
     private void addNewEmployee() throws IOException {
+        Employees emp = new Employees();
         System.out.println("Modulo agregar nuevo empleado");
         System.out.println("***********************\n");
         System.out.println("1. Agregar un nuevo Jefe/a");
@@ -83,18 +84,22 @@ public class Administrator extends Employees {
         String selec = br.readLine();
         switch (selec) {
             case "1":
-                createdEmployess[j] = addNewBoss();
+                emp.hiredEmployees[j] = addNewBoss();
+                createdEmployess[j] = emp.hiredEmployees[j];
                 j++;
                 editFields();
                 break;
             case "2":
                 createdEmployess[j] = addNewCashier();
+                emp.hiredEmployees[j] = emp.hiredEmployees[j];
                 j++;
                 editFields();
                 break;
             case "3":
-                createdEmployess[j] = addNewBoss();
+                createdEmployess[j] = addNewCleaningAttend();
+                emp.hiredEmployees[j] = emp.hiredEmployees[j];
                 j++;
+                editFields();
                 break;
             case "4":
                 createdEmployess[j] = addNewBoss();
@@ -163,7 +168,7 @@ public class Administrator extends Employees {
             editFields();
         } else {
             for (int i = 0; i < j; i++) {
-                System.out.println("Posicion : " + createdEmployess[i].getClass());
+                System.out.println("Posicion : " + createdEmployess[i].getClass().getSimpleName());
                 System.out.println("Nombre: " + createdEmployess[i].getName());
                 System.out.println("ID: " + createdEmployess[i].getID());
                 System.out.println("Direccion: " + createdEmployess[i].getAdress());
@@ -175,7 +180,35 @@ public class Administrator extends Employees {
     }
 
     private void logOut() {
-        System.out.println("Cerrando Sesion");
+        try {
+            System.out.println("Cerrando Sesion...");
+            Thread.sleep(2000);
+        } catch (InterruptedException ex) {
+            System.err.println("Hubo un error.");
+        }
+    }
+
+    private Employees addNewCleaningAttend() throws IOException {
+        Employees cleaningAtt = new CleaningAttendant(250000);
+        System.out.println("Ingrese el nombre del nuevo Miscelaneo");
+        String name = br.readLine();
+        cleaningAtt.setName(name);
+        System.out.println("Digite el ID");
+        String id = br.readLine();
+        cleaningAtt.setID(id);
+        System.out.println("Ingrese la contrasenia");
+        String pass = br.readLine();
+        cleaningAtt.setPassword(pass);
+        System.out.println("Ingrese la direccion");
+        String addr = br.readLine();
+        cleaningAtt.setAdress(addr);
+        System.out.println("Ingrese el numero de telefono");
+        String phoneNum = br.readLine();
+        cleaningAtt.setPhoneNumber(phoneNum);
+        System.out.println("Miscelaneo creado con exito");
+
+        return cleaningAtt;
+
     }
 
 }

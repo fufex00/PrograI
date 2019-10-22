@@ -22,7 +22,7 @@ public class Employees {
     private String email;
     private String password;
 
-    public Employees[] hiredEmployees;
+    public Employees[] hiredEmployees = new Employees[25];
 
     private WorkingSchedule[] workedHour;
 
@@ -163,4 +163,20 @@ public class Employees {
         this.password = password;
     }
 
+    
+    private void printEmployeelist() throws IOException {
+        if (hiredEmployees[0] == (null)) {
+            System.out.println("La lista esta vacia");
+        } else {
+            for (int i = 0; i < count; i++) {
+                System.out.println("Posicion : " + hiredEmployees[i].getClass().getSimpleName());
+                System.out.println("Nombre: " + hiredEmployees[i].getName());
+                System.out.println("ID: " + hiredEmployees[i].getID());
+                System.out.println("Direccion: " + hiredEmployees[i].getAdress());
+                System.out.println("# de telefono: " + hiredEmployees[i].getPhoneNumber());
+                System.out.println("***********************\n");
+            }
+
+        }
+    }
 }

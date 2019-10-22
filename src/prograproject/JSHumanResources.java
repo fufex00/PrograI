@@ -14,7 +14,6 @@ public class JSHumanResources {
         System.out.println("**********************************");
         System.out.println("");
         login();
-
     }
 
     public static void mainMenu() throws IOException {
@@ -22,29 +21,34 @@ public class JSHumanResources {
 
     private static void login() throws IOException {
         System.out.println("Ingrese su ID: ");
-        String user = br.readLine();        
+        String user = br.readLine();
         System.out.println("Ingrese su contrasenia");                           //insertar la enie que falta
         String pass = br.readLine();
-        
+
         verifyLogin(user, pass);
     }
 
     private static void verifyLogin(String user, String password) throws IOException {
-        
+
         Administrator admin = new Administrator("admin", "pass1");
         if ((admin.getUser().equals(user)) && (admin.getPassword().equals(password))) {
             admin.editFields();
             login();
         }
-        
-        
-        
+        for (int i = 0; i < admin.createdEmployess.length; i++) {
+            if (admin.createdEmployess[i].getID().equals(user) && admin.createdEmployess[i].getPassword().equals(password)) {
+                System.out.println("Eureka");
+            }
+
+        }
+
     }
 
     public void printPositionTable() {
     }
 
     public void loadInfo() {
+        
     }
 
     public void vacations() {
