@@ -13,6 +13,14 @@ public class Administrator extends Employees {
     public Employees createdEmployess[] = new Employees[20];
     public int j = 0;
 
+    public int getJ() {
+        return j;
+    }
+
+    public void setJ(int j) {
+        this.j = j;
+    }
+
     public Administrator() {
     }
 
@@ -54,7 +62,7 @@ public class Administrator extends Employees {
         System.out.println("***********************\n");
         System.out.println("1. Agregar nuevo Empleado");
         System.out.println("2. Ver lista de Empleados");
-        System.out.println("n. Salir");
+        System.out.println("n. Salir");              // aqui se debe agregar los valores que faltan en la descripcion del proyecto
         String selec = br.readLine();
         switch (selec) {
             case "1":
