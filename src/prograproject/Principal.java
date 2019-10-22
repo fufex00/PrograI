@@ -4,11 +4,13 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class JSHumanResources {
+public class Principal {
 
     public static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     public static Administrator admin = new Administrator("admin", "pass1");
-    public static Employees data [] = new Employees[30];
+    public static Boss boss = new Boss();
+    public static Employees[] employeeData = new Employees[30];
+    public static int counter = 0;
 
     public static void main(String[] args) throws IOException {
         System.out.println("**********************************");
@@ -21,7 +23,7 @@ public class JSHumanResources {
     public static void mainMenu() throws IOException {
     }
 
-    private static void login() throws IOException {
+    public static void login() throws IOException {
         System.out.println("Ingrese su ID: ");
         String user = br.readLine();
         System.out.println("Ingrese su contraseña");
@@ -36,13 +38,17 @@ public class JSHumanResources {
             admin.editFields();
             login();
         }
-        for (int i = 0; i < admin.createdEmployess.length; i++) {
-            if (admin.createdEmployess[i].getID().equals(user) && admin.createdEmployess[i].getPassword().equals(password)) {
-                System.out.println("Eureka");
+        for (int i = 0; i < counter; i++) {
+            if ((employeeData[i].getID().equals(user) && employeeData[i].getPassword().equals(password) && (employeeData[counter].getClass().getSimpleName().equals("Boss")))) {
+                boss.Hiring();
             }
 
         }
 
+    }
+
+    public int getCounter() {
+        return counter;
     }
 
     public void printPositionTable() {

@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 public class Administrator extends Employees {
 
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    public Principal data = new Principal();
 
     private String user;
     private String password;
@@ -89,11 +90,17 @@ public class Administrator extends Employees {
                 editFields();
                 break;
             case "6":
-                logOut();
+                try {
+                    System.out.println("Cerrando Sesión...");
+                    Thread.sleep(2000);
+                    Principal.login();
+                } catch (InterruptedException ex) {
+                    System.err.println("Hubo un error.");
+                }
                 break;
             default:
-               System.out.println("Los valores ingresados no son correctos");
-               editFields();
+                System.out.println("Los valores ingresados no son correctos");
+                editFields();
         }
     }
 
@@ -106,10 +113,11 @@ public class Administrator extends Employees {
         System.out.println("4. Agregar un nuevo Organizador/a");
         System.out.println("5. Agregar un nuevo Secretario/a");
         System.out.println("6. Agregar un nuevo Vendedor/a");
+        System.out.println("7. Regresar");
         String selec = br.readLine();
         switch (selec) {
             case "1":
-                createdEmployess[j] = addNewBoss();
+                Principal.employeeData[data.getCounter()] = addNewBoss();
                 j++;
                 editFields();
                 break;
@@ -136,6 +144,9 @@ public class Administrator extends Employees {
             case "6":
                 createdEmployess[j] = addNewSeller();
                 j++;
+                editFields();
+                break;
+            case "7":
                 editFields();
                 break;
             default:
@@ -269,7 +280,7 @@ public class Administrator extends Employees {
         System.out.println("Vendedor(a) creado con éxito");
         return seller;
     }
-    
+
     private void removeEmployee() throws IOException {
         System.out.println("Módulo de Eliminar Empleado");
         System.out.println("****************************\n");
@@ -281,7 +292,7 @@ public class Administrator extends Employees {
             }
         }
     }
-    
+
     private void searchEmployee() throws IOException {
         System.out.println("Módulo buscar Empleado");
         System.out.println("***********************\n");
@@ -297,11 +308,11 @@ public class Administrator extends Employees {
             }
         }
     }
-    
+
     private void modifyEmployee() throws IOException {
         System.out.println("Módulo de Modificar Empleado");
         System.out.println("*****************************\n");
-        
+
         for (int i = 0; i < j; i++) {
             System.out.println("Posición : " + createdEmployess[i].getClass().getSimpleName());
             System.out.println("Nombre: " + createdEmployess[i].getName());
@@ -311,9 +322,9 @@ public class Administrator extends Employees {
             System.out.println("***********************\n");
         }
         System.out.println("¿Qué datos desea modificar del empleado?");
-        
+
     }
-    
+
     private void printEmployeelist() throws IOException {
         if (createdEmployess[0] == (null)) {
             System.out.println("La lista esta vacía");
@@ -330,20 +341,4 @@ public class Administrator extends Employees {
         }
     }
 
-    private void logOut() {
-        try {
-            System.out.println("Cerrando Sesión...");
-            Thread.sleep(2000);
-        } catch (InterruptedException ex) {
-            System.err.println("Hubo un error.");
-        }
-    }
-
-  
-
-    
-
-        
-
-    
 }

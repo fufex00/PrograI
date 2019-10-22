@@ -1,11 +1,10 @@
 package prograproject;
 
-public class Boss extends Employees implements HireEmployees {
+public class Boss extends Employees {
 
     private double bossSalary;
 
     private double bonus;
-    private String password;
 
     public Boss() {
     }
@@ -47,7 +46,6 @@ public class Boss extends Employees implements HireEmployees {
         this.bonus = bonus;
     }
 
-    @Override
     public void Hiring() {
 
     }
