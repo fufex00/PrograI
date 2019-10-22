@@ -7,6 +7,8 @@ import java.io.InputStreamReader;
 public class JSHumanResources {
 
     public static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    public static Administrator admin = new Administrator("admin", "pass1");
+    public static Employees data [] = new Employees[30];
 
     public static void main(String[] args) throws IOException {
         System.out.println("**********************************");
@@ -22,7 +24,7 @@ public class JSHumanResources {
     private static void login() throws IOException {
         System.out.println("Ingrese su ID: ");
         String user = br.readLine();
-        System.out.println("Ingrese su contraseña");                           
+        System.out.println("Ingrese su contraseña");
         String pass = br.readLine();
 
         verifyLogin(user, pass);
@@ -30,7 +32,6 @@ public class JSHumanResources {
 
     private static void verifyLogin(String user, String password) throws IOException {
 
-        Administrator admin = new Administrator("admin", "pass1");
         if ((admin.getUser().equals(user)) && (admin.getPassword().equals(password))) {
             admin.editFields();
             login();
@@ -48,7 +49,7 @@ public class JSHumanResources {
     }
 
     public void loadInfo() {
-        
+
     }
 
     public void vacations() {

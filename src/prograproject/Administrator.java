@@ -98,7 +98,6 @@ public class Administrator extends Employees {
     }
 
     private void addNewEmployee() throws IOException {
-        Employees emp = new Employees();
         System.out.println("Módulo agregar nuevo empleado");
         System.out.println("***********************\n");
         System.out.println("1. Agregar un nuevo Jefe/a");
@@ -110,38 +109,32 @@ public class Administrator extends Employees {
         String selec = br.readLine();
         switch (selec) {
             case "1":
-                emp.hiredEmployees[j] = addNewBoss();
-                createdEmployess[j] = emp.hiredEmployees[j];
+                createdEmployess[j] = addNewBoss();
                 j++;
                 editFields();
                 break;
             case "2":
                 createdEmployess[j] = addNewCashier();
-                createdEmployess[j] = emp.hiredEmployees[j];
                 j++;
                 editFields();
                 break;
             case "3":
                 createdEmployess[j] = addNewCleaningAttend();
-                createdEmployess[j] = emp.hiredEmployees[j];
                 j++;
                 editFields();
                 break;
             case "4":
                 createdEmployess[j] = addNewOrganizer();
-                createdEmployess[j] = emp.hiredEmployees[j];
                 j++;
                 editFields();
                 break;
             case "5":
                 createdEmployess[j] = addNewSecretary();
-                createdEmployess[j] = emp.hiredEmployees[j];
                 j++;
                 editFields();
                 break;
             case "6":
                 createdEmployess[j] = addNewSeller();
-                createdEmployess[j] = emp.hiredEmployees[j];
                 j++;
                 editFields();
                 break;
