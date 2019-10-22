@@ -22,7 +22,7 @@ public class JSHumanResources {
     private static void login() throws IOException {
         System.out.println("Ingrese su ID: ");
         String user = br.readLine();
-        System.out.println("Ingrese su contrasenia");                           //insertar la enie que falta
+        System.out.println("Ingrese su contraseña");                           
         String pass = br.readLine();
 
         verifyLogin(user, pass);

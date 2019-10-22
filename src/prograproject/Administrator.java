@@ -307,7 +307,18 @@ public class Administrator extends Employees {
     
     private void modifyEmployee() throws IOException {
         System.out.println("Módulo de Modificar Empleado");
-        System.out.println("*****************************\n");    
+        System.out.println("*****************************\n");
+        
+        for (int i = 0; i < j; i++) {
+            System.out.println("Posición : " + createdEmployess[i].getClass().getSimpleName());
+            System.out.println("Nombre: " + createdEmployess[i].getName());
+            System.out.println("ID: " + createdEmployess[i].getID());
+            System.out.println("Dirección: " + createdEmployess[i].getAdress());
+            System.out.println("# de teléfono: " + createdEmployess[i].getPhoneNumber());
+            System.out.println("***********************\n");
+        }
+        System.out.println("¿Qué datos desea modificar del empleado?");
+        
     }
     
     private void printEmployeelist() throws IOException {
