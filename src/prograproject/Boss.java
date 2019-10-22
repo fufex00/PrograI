@@ -1,5 +1,7 @@
 package prograproject;
 
+import java.io.IOException;
+
 public class Boss extends Employees {
 
     private double bossSalary;
@@ -46,8 +48,10 @@ public class Boss extends Employees {
         this.bonus = bonus;
     }
 
-    public void Hiring() {
 
+    public void Hiring() throws IOException {
+        Administrator a = new Administrator();
+        a.addNewCashier();
     }
 
 }

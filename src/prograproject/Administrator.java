@@ -92,7 +92,7 @@ public class Administrator extends Employees {
             case "6":
                 try {
                     System.out.println("Cerrando Sesión...");
-                    Thread.sleep(2000);
+                    Thread.sleep(500);
                     Principal.login();
                 } catch (InterruptedException ex) {
                     System.err.println("Hubo un error.");
@@ -118,32 +118,33 @@ public class Administrator extends Employees {
         switch (selec) {
             case "1":
                 Principal.employeeData[data.getCounter()] = addNewBoss();
-                j++;
+                Principal.sumCounter();
+                System.out.println(data.getCounter());
                 editFields();
                 break;
             case "2":
-                createdEmployess[j] = addNewCashier();
-                j++;
+                Principal.employeeData[data.getCounter()] = addNewCashier();
+                Principal.sumCounter();
                 editFields();
                 break;
             case "3":
-                createdEmployess[j] = addNewCleaningAttend();
-                j++;
+                Principal.employeeData[data.getCounter()] = addNewCleaningAttend();
+                Principal.sumCounter();
                 editFields();
                 break;
             case "4":
-                createdEmployess[j] = addNewOrganizer();
-                j++;
+                Principal.employeeData[data.getCounter()] = addNewOrganizer();
+                Principal.sumCounter();
                 editFields();
                 break;
             case "5":
-                createdEmployess[j] = addNewSecretary();
-                j++;
+                Principal.employeeData[data.getCounter()] = addNewSecretary();
+                Principal.sumCounter();
                 editFields();
                 break;
             case "6":
-                createdEmployess[j] = addNewSeller();
-                j++;
+                Principal.employeeData[data.getCounter()] = addNewSeller();
+                Principal.sumCounter();
                 editFields();
                 break;
             case "7":
@@ -176,7 +177,7 @@ public class Administrator extends Employees {
         return boss;
     }
 
-    private Employees addNewCashier() throws IOException {
+    public Employees addNewCashier() throws IOException {
         Employees cashier = new Cashier(224000);
         System.out.println("Ingrese el nombre del nuevo Cajero(a)");
         String name = br.readLine();
@@ -197,7 +198,7 @@ public class Administrator extends Employees {
         return cashier;
     }
 
-    private Employees addNewCleaningAttend() throws IOException {
+    public Employees addNewCleaningAttend() throws IOException {
         Employees cleaningAtt = new CleaningAttendant(200000);
         System.out.println("Ingrese el nombre del nuevo Miscelaneo(a)");
         String name = br.readLine();
@@ -218,7 +219,7 @@ public class Administrator extends Employees {
         return cleaningAtt;
     }
 
-    private Employees addNewOrganizer() throws IOException {
+    public Employees addNewOrganizer() throws IOException {
         Employees organizer = new Organizer(244000);
         System.out.println("Ingrese el nombre del nuevo Organizador(a)");
         String name = br.readLine();
@@ -239,7 +240,7 @@ public class Administrator extends Employees {
         return organizer;
     }
 
-    private Employees addNewSecretary() throws IOException {
+    public Employees addNewSecretary() throws IOException {
         Employees secretary = new Secretary(316800);
         System.out.println("Ingrese el nombre del nuevo Secretario(a)");
         String name = br.readLine();
@@ -260,7 +261,7 @@ public class Administrator extends Employees {
         return secretary;
     }
 
-    private Employees addNewSeller() throws IOException {
+    public Employees addNewSeller() throws IOException {
         Employees seller = new Seller(264000);
         System.out.println("Ingrese el nombre del nuevo Vendedor(a)");
         String name = br.readLine();
@@ -286,7 +287,7 @@ public class Administrator extends Employees {
         System.out.println("****************************\n");
         System.out.println("Ingrese el ID del empleado");
         String id = br.readLine();
-        for (int i = 0; i < j; i++) {
+        for (int i = 0; i < data.getCounter(); i++) {
             if (id.equals(createdEmployess[i].getID())) {
                 System.out.println("");;
             }
@@ -298,10 +299,11 @@ public class Administrator extends Employees {
         System.out.println("***********************\n");
         System.out.println("Ingrese el ID del empleado");
         String id = br.readLine();
-        for (int i = 0; i < j; i++) {
-            if (id.equals(createdEmployess[i].getID())) {
-                System.out.println("Nombre: " + createdEmployess[i].getName());
-                System.out.println("ID: " + createdEmployess[i].getID());
+        for (int i = 0; i < data.getCounter(); i++) {
+            if (id.equals(Principal.employeeData[i].getID())) {
+                System.out.println("Nombre: " + Principal.employeeData[i].getName());
+                System.out.println("ID: " + Principal.employeeData[i].getID());
+                editFields();
             } else {
                 System.out.println("Este Empleado no existe");
                 searchEmployee();
@@ -326,16 +328,16 @@ public class Administrator extends Employees {
     }
 
     private void printEmployeelist() throws IOException {
-        if (createdEmployess[0] == (null)) {
+        if (Principal.employeeData[0] == (null)) {
             System.out.println("La lista esta vacía");
             editFields();
         } else {
-            for (int i = 0; i < j; i++) {
-                System.out.println("Posición : " + createdEmployess[i].getClass().getSimpleName());
-                System.out.println("Nombre: " + createdEmployess[i].getName());
-                System.out.println("ID: " + createdEmployess[i].getID());
-                System.out.println("Dirección: " + createdEmployess[i].getAdress());
-                System.out.println("# de teléfono: " + createdEmployess[i].getPhoneNumber());
+            for (int i = 0; i < data.getCounter(); i++) {
+                System.out.println("Posición : " + Principal.employeeData[i].getClass().getSimpleName());
+                System.out.println("Nombre: " + Principal.employeeData[i].getName());
+                System.out.println("ID: " + Principal.employeeData[i].getID());
+                System.out.println("Dirección: " + Principal.employeeData[i].getAdress());
+                System.out.println("# de teléfono: " + Principal.employeeData[i].getPhoneNumber());
                 System.out.println("***********************\n");
             }
         }

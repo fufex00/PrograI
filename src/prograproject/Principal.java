@@ -24,6 +24,9 @@ public class Principal {
     }
 
     public static void login() throws IOException {
+        for (int i = 0; i < counter; i++) {
+            System.out.println(employeeData[i]);
+        }
         System.out.println("Ingrese su ID: ");
         String user = br.readLine();
         System.out.println("Ingrese su contraseña");
@@ -39,7 +42,9 @@ public class Principal {
             login();
         }
         for (int i = 0; i < counter; i++) {
-            if ((employeeData[i].getID().equals(user) && employeeData[i].getPassword().equals(password) && (employeeData[counter].getClass().getSimpleName().equals("Boss")))) {
+            if ((employeeData[i].getID().equals(user) && employeeData[i].
+                    getPassword().equals(password))) {
+                System.out.println("Eureka");
                 boss.Hiring();
             }
 
@@ -51,11 +56,15 @@ public class Principal {
         return counter;
     }
 
-    public void printPositionTable() {
+    public static void setCounter(int counter) {
+        Principal.counter = counter;
     }
 
-    public void loadInfo() {
+    public static void sumCounter() {
+        counter++;
+    }
 
+    public void printPositionTable() {
     }
 
     public void vacations() {
