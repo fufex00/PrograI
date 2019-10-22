@@ -95,7 +95,7 @@ public class Administrator extends Employees {
 
     private void addNewEmployee() throws IOException {
         Employees emp = new Employees();
-        System.out.println("Modulo agregar nuevo empleado");
+        System.out.println("Módulo agregar nuevo empleado");
         System.out.println("***********************\n");
         System.out.println("1. Agregar un nuevo Jefe/a");
         System.out.println("2. Agregar un nuevo Cajero/a");
@@ -155,16 +155,16 @@ public class Administrator extends Employees {
         System.out.println("Digite el ID");
         String id = br.readLine();
         boss.setID(id);
-        System.out.println("Ingrese la contrasenia");
+        System.out.println("Ingrese la contraseña");
         String pass = br.readLine();
         boss.setPassword(pass);
-        System.out.println("Ingrese la direccion");
+        System.out.println("Ingrese la dirección");
         String addr = br.readLine();
         boss.setAdress(addr);
-        System.out.println("Ingrese el numero de telefono");
+        System.out.println("Ingrese el número de teléfono");
         String phoneNum = br.readLine();
         boss.setPhoneNumber(phoneNum);
-        System.out.println("Jefe creado con exito");
+        System.out.println("Jefe creado con éxito");
 
         return boss;
     }
@@ -177,16 +177,16 @@ public class Administrator extends Employees {
         System.out.println("Digite el ID");
         String id = br.readLine();
         cashier.setID(id);
-        System.out.println("Ingrese la contrasenia");
+        System.out.println("Ingrese la contraseña");
         String pass = br.readLine();
         cashier.setPassword(pass);
-        System.out.println("Ingrese la direccion");
+        System.out.println("Ingrese la dirección");
         String addr = br.readLine();
         cashier.setAdress(addr);
-        System.out.println("Ingrese el numero de telefono");
+        System.out.println("Ingrese el número de teléfono");
         String phoneNum = br.readLine();
         cashier.setPhoneNumber(phoneNum);
-        System.out.println("Cajero/a creado/a con exito");
+        System.out.println("Cajero/a creado/a con éxito");
         return cashier;
 
     }
@@ -199,16 +199,16 @@ public class Administrator extends Employees {
         System.out.println("Digite el ID");
         String id = br.readLine();
         cleaningAtt.setID(id);
-        System.out.println("Ingrese la contrasenia");
+        System.out.println("Ingrese la contraseña");
         String pass = br.readLine();
         cleaningAtt.setPassword(pass);
-        System.out.println("Ingrese la direccion");
+        System.out.println("Ingrese la dirección");
         String addr = br.readLine();
         cleaningAtt.setAdress(addr);
-        System.out.println("Ingrese el numero de telefono");
+        System.out.println("Ingrese el número de teléfono");
         String phoneNum = br.readLine();
         cleaningAtt.setPhoneNumber(phoneNum);
-        System.out.println("Miscelaneo creado con exito");
+        System.out.println("Miscelaneo creado con éxito");
         return cleaningAtt;
 
     }
@@ -221,16 +221,16 @@ public class Administrator extends Employees {
         System.out.println("Digite el ID");
         String id = br.readLine();
         organizer.setID(id);
-        System.out.println("Ingrese la contrasenia");
+        System.out.println("Ingrese la contraseña");
         String pass = br.readLine();
         organizer.setPassword(pass);
-        System.out.println("Ingrese la direccion");
+        System.out.println("Ingrese la dirección");
         String addr = br.readLine();
         organizer.setAdress(addr);
-        System.out.println("Ingrese el numero de telefono");
+        System.out.println("Ingrese el número de teléfono");
         String phoneNum = br.readLine();
         organizer.setPhoneNumber(phoneNum);
-        System.out.println("Organizador creado con exito");
+        System.out.println("Organizador creado con éxito");
         return organizer;
     }
 
@@ -242,16 +242,16 @@ public class Administrator extends Employees {
         System.out.println("Digite el ID");
         String id = br.readLine();
         secretary.setID(id);
-        System.out.println("Ingrese la contrasenia");
+        System.out.println("Ingrese la contraseña");
         String pass = br.readLine();
         secretary.setPassword(pass);
-        System.out.println("Ingrese la direccion");
+        System.out.println("Ingrese la dirección");
         String addr = br.readLine();
         secretary.setAdress(addr);
-        System.out.println("Ingrese el numero de telefono");
+        System.out.println("Ingrese el número de teléfono");
         String phoneNum = br.readLine();
         secretary.setPhoneNumber(phoneNum);
-        System.out.println("Secretario(a) creado con exito");
+        System.out.println("Secretario(a) creado con éxito");
         return secretary;
     }
 
@@ -263,22 +263,22 @@ public class Administrator extends Employees {
         System.out.println("Digite el ID");
         String id = br.readLine();
         seller.setID(id);
-        System.out.println("Ingrese la contrasenia");
+        System.out.println("Ingrese la contraseña");
         String pass = br.readLine();
         seller.setPassword(pass);
-        System.out.println("Ingrese la direccion");
+        System.out.println("Ingrese la dirección");
         String addr = br.readLine();
         seller.setAdress(addr);
-        System.out.println("Ingrese el numero de telefono");
+        System.out.println("Ingrese el número de teléfono");
         String phoneNum = br.readLine();
         seller.setPhoneNumber(phoneNum);
-        System.out.println("Vendedor(a) creado con exito");
+        System.out.println("Vendedor(a) creado con éxito");
         return seller;
     }
 
     private void logOut() {
         try {
-            System.out.println("Cerrando Sesion...");
+            System.out.println("Cerrando Sesión...");
             Thread.sleep(2000);
         } catch (InterruptedException ex) {
             System.err.println("Hubo un error.");
@@ -287,15 +287,15 @@ public class Administrator extends Employees {
 
     private void printEmployeelist() throws IOException {
         if (createdEmployess[0] == (null)) {
-            System.out.println("La lista esta vacia");
+            System.out.println("La lista esta vacía");
             editFields();
         } else {
             for (int i = 0; i < j; i++) {
-                System.out.println("Posicion : " + createdEmployess[i].getClass().getSimpleName());
+                System.out.println("Posición : " + createdEmployess[i].getClass().getSimpleName());
                 System.out.println("Nombre: " + createdEmployess[i].getName());
                 System.out.println("ID: " + createdEmployess[i].getID());
-                System.out.println("Direccion: " + createdEmployess[i].getAdress());
-                System.out.println("# de telefono: " + createdEmployess[i].getPhoneNumber());
+                System.out.println("Dirección: " + createdEmployess[i].getAdress());
+                System.out.println("# de teléfono: " + createdEmployess[i].getPhoneNumber());
                 System.out.println("***********************\n");
             }
 
@@ -303,7 +303,7 @@ public class Administrator extends Employees {
     }
 
     private void searchEmployee() throws IOException {
-        System.out.println("Modulo buscar Empleado");
+        System.out.println("Módulo buscar Empleado");
         System.out.println("***********************\n");
         System.out.println("Ingrese el ID del empleado");
         String id = br.readLine();
