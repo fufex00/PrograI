@@ -70,26 +70,30 @@ public class Administrator extends Employees {
         switch (selec) {
             case "1":
                 addNewEmployee();
+                editFields();
                 break;
             case "2":
-                printEmployeelist();
+                removeEmployee();
                 editFields();
+                break;
             case "3":
                 searchEmployee();
                 editFields();
                 break;
             case "4":
-
+                modifyEmployee();
+                editFields();
                 break;
             case "5":
-
+                printEmployeelist();
+                editFields();
                 break;
             case "6":
                 logOut();
                 break;
             default:
-                System.out.println("Los valores ingresados no son correctos");
-                editFields();
+               System.out.println("Los valores ingresados no son correctos");
+               editFields();
         }
     }
 
@@ -165,7 +169,6 @@ public class Administrator extends Employees {
         String phoneNum = br.readLine();
         boss.setPhoneNumber(phoneNum);
         System.out.println("Jefe creado con éxito");
-
         return boss;
     }
 
@@ -188,7 +191,6 @@ public class Administrator extends Employees {
         cashier.setPhoneNumber(phoneNum);
         System.out.println("Cajero/a creado/a con éxito");
         return cashier;
-
     }
 
     private Employees addNewCleaningAttend() throws IOException {
@@ -210,7 +212,6 @@ public class Administrator extends Employees {
         cleaningAtt.setPhoneNumber(phoneNum);
         System.out.println("Miscelaneo creado con éxito");
         return cleaningAtt;
-
     }
 
     private Employees addNewOrganizer() throws IOException {
@@ -275,33 +276,19 @@ public class Administrator extends Employees {
         System.out.println("Vendedor(a) creado con éxito");
         return seller;
     }
-
-    private void logOut() {
-        try {
-            System.out.println("Cerrando Sesión...");
-            Thread.sleep(2000);
-        } catch (InterruptedException ex) {
-            System.err.println("Hubo un error.");
-        }
-    }
-
-    private void printEmployeelist() throws IOException {
-        if (createdEmployess[0] == (null)) {
-            System.out.println("La lista esta vacía");
-            editFields();
-        } else {
-            for (int i = 0; i < j; i++) {
-                System.out.println("Posición : " + createdEmployess[i].getClass().getSimpleName());
-                System.out.println("Nombre: " + createdEmployess[i].getName());
-                System.out.println("ID: " + createdEmployess[i].getID());
-                System.out.println("Dirección: " + createdEmployess[i].getAdress());
-                System.out.println("# de teléfono: " + createdEmployess[i].getPhoneNumber());
-                System.out.println("***********************\n");
+    
+    private void removeEmployee() throws IOException {
+        System.out.println("Módulo de Eliminar Empleado");
+        System.out.println("****************************\n");
+        System.out.println("Ingrese el ID del empleado");
+        String id = br.readLine();
+        for (int i = 0; i < j; i++) {
+            if (id.equals(createdEmployess[i].getID())) {
+                System.out.println("");;
             }
-
         }
     }
-
+    
     private void searchEmployee() throws IOException {
         System.out.println("Módulo buscar Empleado");
         System.out.println("***********************\n");
@@ -315,7 +302,44 @@ public class Administrator extends Employees {
                 System.out.println("Este Empleado no existe");
                 searchEmployee();
             }
- 
         }
     }
+    
+    private void modifyEmployee() throws IOException {
+        System.out.println("Módulo de Modificar Empleado");
+        System.out.println("*****************************\n");    
+    }
+    
+    private void printEmployeelist() throws IOException {
+        if (createdEmployess[0] == (null)) {
+            System.out.println("La lista esta vacía");
+            editFields();
+        } else {
+            for (int i = 0; i < j; i++) {
+                System.out.println("Posición : " + createdEmployess[i].getClass().getSimpleName());
+                System.out.println("Nombre: " + createdEmployess[i].getName());
+                System.out.println("ID: " + createdEmployess[i].getID());
+                System.out.println("Dirección: " + createdEmployess[i].getAdress());
+                System.out.println("# de teléfono: " + createdEmployess[i].getPhoneNumber());
+                System.out.println("***********************\n");
+            }
+        }
+    }
+
+    private void logOut() {
+        try {
+            System.out.println("Cerrando Sesión...");
+            Thread.sleep(2000);
+        } catch (InterruptedException ex) {
+            System.err.println("Hubo un error.");
+        }
+    }
+
+  
+
+    
+
+        
+
+    
 }
