@@ -10,6 +10,10 @@ public class Seller extends Employees {
 
     private double sellerSalary;
 
+    public Seller(double sellerSalary) {
+        this.sellerSalary = sellerSalary;
+    }
+
     public Seller(int soldProducts, int bonus, double quantitySold) {
         this.soldProducts = soldProducts;
         this.bonus = bonus;

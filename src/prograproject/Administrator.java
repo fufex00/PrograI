@@ -60,9 +60,12 @@ public class Administrator extends Employees {
     public void editFields() throws IOException {
         System.out.println("Administrador");
         System.out.println("***********************\n");
-        System.out.println("1. Agregar nuevo Empleado");
-        System.out.println("2. Ver lista de Empleados");
-        System.out.println("n. Salir");              // aqui se debe agregar los valores que faltan en la descripcion del proyecto
+        System.out.println("1. Insertar nuevo Empleado");
+        System.out.println("2. Eliminar Empleado");
+        System.out.println("3. Buscar Empleado");
+        System.out.println("4. Modificar Empleado");
+        System.out.println("5. Ver lista de Empleados");
+        System.out.println("6. Salir");              // aqui se debe agregar los valores que faltan en la descripcion del proyecto
         String selec = br.readLine();
         switch (selec) {
             case "1":
@@ -71,11 +74,22 @@ public class Administrator extends Employees {
             case "2":
                 printEmployeelist();
                 editFields();
-            case "10":
+            case "3":
+                searchEmployee();
+                editFields();
+                break;
+            case "4":
+
+                break;
+            case "5":
+
+                break;
+            case "6":
                 logOut();
                 break;
             default:
-                throw new AssertionError();
+                System.out.println("Los valores ingresados no son correctos");
+                editFields();
         }
     }
 
@@ -99,36 +113,43 @@ public class Administrator extends Employees {
                 break;
             case "2":
                 createdEmployess[j] = addNewCashier();
-                emp.hiredEmployees[j] = emp.hiredEmployees[j];
+                createdEmployess[j] = emp.hiredEmployees[j];
                 j++;
                 editFields();
                 break;
             case "3":
                 createdEmployess[j] = addNewCleaningAttend();
-                emp.hiredEmployees[j] = emp.hiredEmployees[j];
+                createdEmployess[j] = emp.hiredEmployees[j];
                 j++;
                 editFields();
                 break;
             case "4":
-                createdEmployess[j] = addNewBoss();
+                createdEmployess[j] = addNewOrganizer();
+                createdEmployess[j] = emp.hiredEmployees[j];
                 j++;
+                editFields();
                 break;
             case "5":
-                createdEmployess[j] = addNewBoss();
+                createdEmployess[j] = addNewSecretary();
+                createdEmployess[j] = emp.hiredEmployees[j];
                 j++;
+                editFields();
                 break;
             case "6":
-                createdEmployess[j] = addNewBoss();
+                createdEmployess[j] = addNewSeller();
+                createdEmployess[j] = emp.hiredEmployees[j];
                 j++;
+                editFields();
                 break;
             default:
-                throw new AssertionError();
+                System.out.println("Los valores ingresados no son correctos");
+                addNewEmployee();
         }
     }
 
     private Employees addNewBoss() throws IOException {
         Employees boss = new Boss(400000);
-        System.out.println("Ingrese el nombre del nuevo Jefe");
+        System.out.println("Ingrese el nombre del nuevo Jefe(a)");
         String name = br.readLine();
         boss.setName(name);
         System.out.println("Digite el ID");
@@ -149,8 +170,8 @@ public class Administrator extends Employees {
     }
 
     private Employees addNewCashier() throws IOException {
-        Employees cashier = new Cashier(360000);
-        System.out.println("Ingrese el nombre del nuevo Cajero");
+        Employees cashier = new Cashier(224000);
+        System.out.println("Ingrese el nombre del nuevo Cajero(a)");
         String name = br.readLine();
         cashier.setName(name);
         System.out.println("Digite el ID");
@@ -170,6 +191,100 @@ public class Administrator extends Employees {
 
     }
 
+    private Employees addNewCleaningAttend() throws IOException {
+        Employees cleaningAtt = new CleaningAttendant(200000);
+        System.out.println("Ingrese el nombre del nuevo Miscelaneo(a)");
+        String name = br.readLine();
+        cleaningAtt.setName(name);
+        System.out.println("Digite el ID");
+        String id = br.readLine();
+        cleaningAtt.setID(id);
+        System.out.println("Ingrese la contrasenia");
+        String pass = br.readLine();
+        cleaningAtt.setPassword(pass);
+        System.out.println("Ingrese la direccion");
+        String addr = br.readLine();
+        cleaningAtt.setAdress(addr);
+        System.out.println("Ingrese el numero de telefono");
+        String phoneNum = br.readLine();
+        cleaningAtt.setPhoneNumber(phoneNum);
+        System.out.println("Miscelaneo creado con exito");
+        return cleaningAtt;
+
+    }
+
+    private Employees addNewOrganizer() throws IOException {
+        Employees organizer = new Organizer(244000);
+        System.out.println("Ingrese el nombre del nuevo Organizador(a)");
+        String name = br.readLine();
+        organizer.setName(name);
+        System.out.println("Digite el ID");
+        String id = br.readLine();
+        organizer.setID(id);
+        System.out.println("Ingrese la contrasenia");
+        String pass = br.readLine();
+        organizer.setPassword(pass);
+        System.out.println("Ingrese la direccion");
+        String addr = br.readLine();
+        organizer.setAdress(addr);
+        System.out.println("Ingrese el numero de telefono");
+        String phoneNum = br.readLine();
+        organizer.setPhoneNumber(phoneNum);
+        System.out.println("Organizador creado con exito");
+        return organizer;
+    }
+
+    private Employees addNewSecretary() throws IOException {
+        Employees secretary = new Secretary(316800);
+        System.out.println("Ingrese el nombre del nuevo Secretario(a)");
+        String name = br.readLine();
+        secretary.setName(name);
+        System.out.println("Digite el ID");
+        String id = br.readLine();
+        secretary.setID(id);
+        System.out.println("Ingrese la contrasenia");
+        String pass = br.readLine();
+        secretary.setPassword(pass);
+        System.out.println("Ingrese la direccion");
+        String addr = br.readLine();
+        secretary.setAdress(addr);
+        System.out.println("Ingrese el numero de telefono");
+        String phoneNum = br.readLine();
+        secretary.setPhoneNumber(phoneNum);
+        System.out.println("Secretario(a) creado con exito");
+        return secretary;
+    }
+
+    private Employees addNewSeller() throws IOException {
+        Employees seller = new Seller(264000);
+        System.out.println("Ingrese el nombre del nuevo Vendedor(a)");
+        String name = br.readLine();
+        seller.setName(name);
+        System.out.println("Digite el ID");
+        String id = br.readLine();
+        seller.setID(id);
+        System.out.println("Ingrese la contrasenia");
+        String pass = br.readLine();
+        seller.setPassword(pass);
+        System.out.println("Ingrese la direccion");
+        String addr = br.readLine();
+        seller.setAdress(addr);
+        System.out.println("Ingrese el numero de telefono");
+        String phoneNum = br.readLine();
+        seller.setPhoneNumber(phoneNum);
+        System.out.println("Vendedor(a) creado con exito");
+        return seller;
+    }
+
+    private void logOut() {
+        try {
+            System.out.println("Cerrando Sesion...");
+            Thread.sleep(2000);
+        } catch (InterruptedException ex) {
+            System.err.println("Hubo un error.");
+        }
+    }
+
     private void printEmployeelist() throws IOException {
         if (createdEmployess[0] == (null)) {
             System.out.println("La lista esta vacia");
@@ -187,36 +302,20 @@ public class Administrator extends Employees {
         }
     }
 
-    private void logOut() {
-        try {
-            System.out.println("Cerrando Sesion...");
-            Thread.sleep(2000);
-        } catch (InterruptedException ex) {
-            System.err.println("Hubo un error.");
+    private void searchEmployee() throws IOException {
+        System.out.println("Modulo buscar Empleado");
+        System.out.println("***********************\n");
+        System.out.println("Ingrese el ID del empleado");
+        String id = br.readLine();
+        for (int i = 0; i < j; i++) {
+            if (id.equals(createdEmployess[i].getID())) {
+                System.out.println("Nombre: " + createdEmployess[i].getName());
+                System.out.println("ID: " + createdEmployess[i].getID());
+            } else {
+                System.out.println("Este Empleado no existe");
+                searchEmployee();
+            }
+ 
         }
     }
-
-    private Employees addNewCleaningAttend() throws IOException {
-        Employees cleaningAtt = new CleaningAttendant(250000);
-        System.out.println("Ingrese el nombre del nuevo Miscelaneo");
-        String name = br.readLine();
-        cleaningAtt.setName(name);
-        System.out.println("Digite el ID");
-        String id = br.readLine();
-        cleaningAtt.setID(id);
-        System.out.println("Ingrese la contrasenia");
-        String pass = br.readLine();
-        cleaningAtt.setPassword(pass);
-        System.out.println("Ingrese la direccion");
-        String addr = br.readLine();
-        cleaningAtt.setAdress(addr);
-        System.out.println("Ingrese el numero de telefono");
-        String phoneNum = br.readLine();
-        cleaningAtt.setPhoneNumber(phoneNum);
-        System.out.println("Miscelaneo creado con exito");
-
-        return cleaningAtt;
-
-    }
-
 }
