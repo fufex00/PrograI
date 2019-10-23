@@ -24,9 +24,6 @@ public class Principal {
     }
 
     public static void login() throws IOException {
-        for (int i = 0; i < counter; i++) {
-            System.out.println(employeeData[i]);
-        }
         System.out.println("Ingrese su ID: ");
         String user = br.readLine();
         System.out.println("Ingrese su contraseña");

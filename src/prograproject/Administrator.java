@@ -66,7 +66,7 @@ public class Administrator extends Employees {
         System.out.println("3. Buscar Empleado");
         System.out.println("4. Modificar Empleado");
         System.out.println("5. Ver lista de Empleados");
-        System.out.println("6. Salir");              // aqui se debe agregar los valores que faltan en la descripcion del proyecto
+        System.out.println("6. Salir");
         String selec = br.readLine();
         switch (selec) {
             case "1":
@@ -314,16 +314,58 @@ public class Administrator extends Employees {
     private void modifyEmployee() throws IOException {
         System.out.println("Módulo de Modificar Empleado");
         System.out.println("*****************************\n");
+        System.out.println("Ingrese el ID del empleado");
+        String entered = br.readLine();
 
-        for (int i = 0; i < j; i++) {
-            System.out.println("Posición : " + createdEmployess[i].getClass().getSimpleName());
-            System.out.println("Nombre: " + createdEmployess[i].getName());
-            System.out.println("ID: " + createdEmployess[i].getID());
-            System.out.println("Dirección: " + createdEmployess[i].getAdress());
-            System.out.println("# de teléfono: " + createdEmployess[i].getPhoneNumber());
-            System.out.println("***********************\n");
+        for (int i = 0; i < data.getCounter(); i++) {
+            if (entered.equals(Principal.employeeData[i])) {
+                System.out.println("¿Qué datos desea modificar del empleado?\n");
+                System.out.println("1. Nombre");
+                System.out.println("2. ID");
+                System.out.println("3. Dirección");
+                System.out.println("4. # de teléfono");
+                System.out.println("5. Correo Electronico");
+                System.out.println("6. Contrasenia");
+                String selec = br.readLine();
+                switch (selec) {
+                    case "1":
+                        System.out.println("Ingrese el nuevo nombre");
+                        String name = br.readLine();
+                        Principal.employeeData[i].setName(name);
+                        break;
+                    case "2":
+                        System.out.println("Ingrese el nuevo ID");
+                        String id = br.readLine();
+                        Principal.employeeData[i].setID(id);
+                        break;
+                    case "3":
+                        System.out.println("Ingrese la nueva dirección");
+                        String dir = br.readLine();
+                        Principal.employeeData[i].setAdress(dir);
+                        break;
+                    case "4":
+                        System.out.println("Ingrese el nuevo # de telefono");
+                        String phoneN = br.readLine();
+                        Principal.employeeData[i].setPhoneNumber(phoneN);
+                        break;
+                    case "5":
+                        System.out.println("Ingrese el nuevo e-Mail ");
+                        String email = br.readLine();
+                        Principal.employeeData[i].setEmail(email);
+                        break;
+                    case "6":
+                        System.out.println("Ingrese la nueva contrasenia");
+                        String pass = br.readLine();
+                        Principal.employeeData[i].setPassword(password);
+                        break;
+                    default:
+                        throw new AssertionError();
+                }
+            }else{
+                System.out.println("El ID del empleado no existe");
+                modifyEmployee();
+            }
         }
-        System.out.println("¿Qué datos desea modificar del empleado?");
 
     }
 
@@ -333,6 +375,7 @@ public class Administrator extends Employees {
             editFields();
         } else {
             for (int i = 0; i < data.getCounter(); i++) {
+                System.out.println("***********************");
                 System.out.println("Posición : " + Principal.employeeData[i].getClass().getSimpleName());
                 System.out.println("Nombre: " + Principal.employeeData[i].getName());
                 System.out.println("ID: " + Principal.employeeData[i].getID());
