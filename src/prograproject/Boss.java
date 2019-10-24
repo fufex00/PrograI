@@ -51,6 +51,7 @@ public class Boss extends Employees {
 
     public void Hiring() throws IOException {
         Administrator a = new Administrator();
+        System.out.println("funciono");
         a.addNewCashier();
     }
 

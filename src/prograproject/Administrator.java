@@ -5,26 +5,26 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Administrator extends Employees {
-
+    
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     public Principal data = new Principal();
-
+    
     private String user;
     private String password;
     public Employees createdEmployess[] = new Employees[20];
     public int j = 0;
-
+    
     public int getJ() {
         return j;
     }
-
+    
     public void setJ(int j) {
         this.j = j;
     }
-
+    
     public Administrator() {
     }
-
+    
     public Administrator(String user, String password) {
         this.user = user;
         this.password = password;
@@ -57,7 +57,7 @@ public class Administrator extends Employees {
     public void setPassword(String password) {
         this.password = password;
     }
-
+    
     public void editFields() throws IOException {
         System.out.println("Administrador");
         System.out.println("***********************\n");
@@ -103,7 +103,7 @@ public class Administrator extends Employees {
                 editFields();
         }
     }
-
+    
     private void addNewEmployee() throws IOException {
         System.out.println("Módulo agregar nuevo empleado");
         System.out.println("***********************\n");
@@ -119,7 +119,6 @@ public class Administrator extends Employees {
             case "1":
                 Principal.employeeData[data.getCounter()] = addNewBoss();
                 Principal.sumCounter();
-                System.out.println(data.getCounter());
                 editFields();
                 break;
             case "2":
@@ -155,7 +154,7 @@ public class Administrator extends Employees {
                 addNewEmployee();
         }
     }
-
+    
     private Employees addNewBoss() throws IOException {
         Employees boss = new Boss(400000);
         System.out.println("Ingrese el nombre del nuevo Jefe(a)");
@@ -176,7 +175,7 @@ public class Administrator extends Employees {
         System.out.println("Jefe creado con éxito");
         return boss;
     }
-
+    
     public Employees addNewCashier() throws IOException {
         Employees cashier = new Cashier(224000);
         System.out.println("Ingrese el nombre del nuevo Cajero(a)");
@@ -197,7 +196,7 @@ public class Administrator extends Employees {
         System.out.println("Cajero/a creado/a con éxito");
         return cashier;
     }
-
+    
     public Employees addNewCleaningAttend() throws IOException {
         Employees cleaningAtt = new CleaningAttendant(200000);
         System.out.println("Ingrese el nombre del nuevo Miscelaneo(a)");
@@ -218,7 +217,7 @@ public class Administrator extends Employees {
         System.out.println("Miscelaneo creado con éxito");
         return cleaningAtt;
     }
-
+    
     public Employees addNewOrganizer() throws IOException {
         Employees organizer = new Organizer(244000);
         System.out.println("Ingrese el nombre del nuevo Organizador(a)");
@@ -239,7 +238,7 @@ public class Administrator extends Employees {
         System.out.println("Organizador creado con éxito");
         return organizer;
     }
-
+    
     public Employees addNewSecretary() throws IOException {
         Employees secretary = new Secretary(316800);
         System.out.println("Ingrese el nombre del nuevo Secretario(a)");
@@ -260,7 +259,7 @@ public class Administrator extends Employees {
         System.out.println("Secretario(a) creado con éxito");
         return secretary;
     }
-
+    
     public Employees addNewSeller() throws IOException {
         Employees seller = new Seller(264000);
         System.out.println("Ingrese el nombre del nuevo Vendedor(a)");
@@ -281,26 +280,34 @@ public class Administrator extends Employees {
         System.out.println("Vendedor(a) creado con éxito");
         return seller;
     }
-
+    
     private void removeEmployee() throws IOException {
         System.out.println("Módulo de Eliminar Empleado");
         System.out.println("****************************\n");
         System.out.println("Ingrese el ID del empleado");
         String id = br.readLine();
-        for (int i = 0; i < data.getCounter(); i++) {
-            if (id.equals(createdEmployess[i].getID())) {
-                System.out.println("");;
+            System.out.println("Ingrese el ID del empleado");
+            for (int i = 0; i < data.getCounter() && Principal.employeeData[i] != null; i++) {
+                if (id.equals(Principal.employeeData[i].getID())) {
+                    Principal.employeeData[i] = null;
+                    System.out.println("El empleado fue eliminado.");
+                    editFields();
+                } else {
+                    System.out.println("Este Empleado no existe");
+                    searchEmployee();
+                }
             }
-        }
+        
+        
     }
-
+    
     private void searchEmployee() throws IOException {
         System.out.println("Módulo buscar Empleado");
         System.out.println("***********************\n");
         if (Principal.employeeData[0] != null) {
             System.out.println("Ingrese el ID del empleado");
             String id = br.readLine();
-            for (int i = 0; i < data.getCounter(); i++) {
+            for (int i = 0; i < data.getCounter() && Principal.employeeData[i] != null; i++) {
                 if (id.equals(Principal.employeeData[i].getID())) {
                     System.out.println("Nombre: " + Principal.employeeData[i].getName());
                     System.out.println("ID: " + Principal.employeeData[i].getID());
@@ -314,16 +321,16 @@ public class Administrator extends Employees {
             System.out.println("La lista de empleados esta vacia.");
             editFields();
         }
-
+        
     }
-
+    
     private void modifyEmployee() throws IOException {
         System.out.println("Módulo de Modificar Empleado");
         System.out.println("*****************************\n");
         if (Principal.employeeData[0] != null) {
             System.out.println("Ingrese el ID del empleado");
             String entered = br.readLine();
-            for (int i = 0; i < data.getCounter(); i++) {
+            for (int i = 0; i < data.getCounter() && Principal.employeeData[i] != null; i++) {
                 if (entered.equals(Principal.employeeData[i].getID())) {
                     System.out.println("¿Qué datos desea modificar del empleado?\n");
                     System.out.println("1. Nombre");
@@ -382,13 +389,9 @@ public class Administrator extends Employees {
             editFields();
         }
     }
-
+    
     private void printEmployeelist() throws IOException {
-        if (Principal.employeeData[0] == (null)) {
-            System.out.println("La lista esta vacía");
-            editFields();
-        } else {
-            for (int i = 0; i < data.getCounter(); i++) {
+            for (int i = 0; i < data.getCounter() && Principal.employeeData[i] != null; i++) {
                 System.out.println("***********************");
                 System.out.println("Posición : " + Principal.employeeData[i].getClass().getSimpleName());
                 System.out.println("Nombre: " + Principal.employeeData[i].getName());
@@ -396,8 +399,8 @@ public class Administrator extends Employees {
                 System.out.println("Dirección: " + Principal.employeeData[i].getAdress());
                 System.out.println("# de teléfono: " + Principal.employeeData[i].getPhoneNumber());
                 System.out.println("***********************\n");
-            }
+            
         }
     }
-
+    
 }

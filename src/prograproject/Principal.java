@@ -20,9 +20,6 @@ public class Principal {
         login();
     }
 
-    public static void mainMenu() throws IOException {
-    }
-
     public static void login() throws IOException {
         System.out.println("Ingrese su ID: ");
         String user = br.readLine();
@@ -39,9 +36,12 @@ public class Principal {
             login();
         }
         for (int i = 0; i < counter; i++) {
+//            if ((employeeData[i].getID().equals(user) && employeeData[i].
+//                    getPassword().equals(password))) {
+//                
+//            }
             if ((employeeData[i].getID().equals(user) && employeeData[i].
-                    getPassword().equals(password))) {
-                System.out.println("Eureka");
+                    getPassword().equals(password)) && employeeData[i].getClass().getSimpleName().equals("Boss")) {
                 boss.Hiring();
             }
 
@@ -59,6 +59,9 @@ public class Principal {
 
     public static void sumCounter() {
         counter++;
+    }
+    public static void decreaseCounter() {
+        counter--;
     }
 
     public void printPositionTable() {

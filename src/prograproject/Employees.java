@@ -1,7 +1,6 @@
 package prograproject;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Employees {
@@ -41,6 +40,10 @@ public class Employees {
         this.password = password;
         this.workedHour = workedHour;
         this.hiredEmployees = hiredEmployees;
+    }
+
+    public Employees(String name) {
+        this.name = name;
     }
 
     /**
@@ -163,20 +166,4 @@ public class Employees {
         this.password = password;
     }
 
-    
-    private void printEmployeelist() throws IOException {
-        if (hiredEmployees[0] == (null)) {
-            System.out.println("La lista esta vacia");
-        } else {
-            for (int i = 0; i < count; i++) {
-                System.out.println("Posicion : " + hiredEmployees[i].getClass().getSimpleName());
-                System.out.println("Nombre: " + hiredEmployees[i].getName());
-                System.out.println("ID: " + hiredEmployees[i].getID());
-                System.out.println("Direccion: " + hiredEmployees[i].getAdress());
-                System.out.println("# de telefono: " + hiredEmployees[i].getPhoneNumber());
-                System.out.println("***********************\n");
-            }
-
-        }
-    }
 }
