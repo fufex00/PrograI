@@ -66,6 +66,7 @@ public class Administrator extends Employees {
         System.out.println("3. Buscar Empleado");
         System.out.println("4. Modificar Empleado");
         System.out.println("5. Ver lista de Empleados");
+        System.out.println("7. Precargar datos");
         System.out.println("6. Salir");
         String selec = br.readLine();
         switch (selec) {
@@ -97,6 +98,10 @@ public class Administrator extends Employees {
                 } catch (InterruptedException ex) {
                     System.err.println("Hubo un error.");
                 }
+                break;
+            case "7":
+                preLoad();
+                editFields();
                 break;
             default:
                 System.out.println("Los valores ingresados no son correctos");
@@ -402,6 +407,13 @@ public class Administrator extends Employees {
                 System.out.println("***********************\n");
             }
         }
+    }
+    
+    private void preLoad() {
+        Employees boss = new Employees("Steve", "123", "200 noroeste de la municipalidad de Golfito", "86057093", 160, "456", "456", 900000.00);
+        Principal.employeeData[0] = boss;
+        Principal.employeeData[0].setNetSalary();
+        System.out.println(Principal.employeeData[0].getSalary());
     }
 
 }

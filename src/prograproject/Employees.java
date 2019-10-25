@@ -21,16 +21,13 @@ public class Employees {
     private String email;
     private String password;
 
-    public Employees[] hiredEmployees = new Employees[25];
-
-    private WorkingSchedule[] workedHour;
+    private Double salary;
 
     public Employees() {
     }
 
     public Employees(String name, String ID, String adress, String phoneNumber,
-            int workedHours, String email, String password, Employees[] hiredEmployees,
-            WorkingSchedule[] workedHour) {
+            int workedHours, String email, String password, Double salary) {
         this.name = name;
         this.ID = ID;
         this.address = adress;
@@ -38,8 +35,7 @@ public class Employees {
         this.workedHours = workedHours;
         this.email = email;
         this.password = password;
-        this.workedHour = workedHour;
-        this.hiredEmployees = hiredEmployees;
+        this.salary = salary;
     }
 
     public Employees(String name) {
@@ -130,33 +126,6 @@ public class Employees {
         this.email = email;
     }
 
-    /**
-     * @return the hiredEmployees
-     */
-    public Employees[] getHiredEmployees() {
-        return hiredEmployees;
-    }
-
-    /**
-     * @param hiredEmployees the hiredEmployees to set
-     */
-    public void setHiredEmployees(Employees[] hiredEmployees) {
-        this.hiredEmployees = hiredEmployees;
-    }
-
-    /**
-     * @return the workedHour
-     */
-    public WorkingSchedule[] getWorkedHour() {
-        return workedHour;
-    }
-
-    /**
-     * @param workedHour the workedHour to set
-     */
-    public void setWorkedHour(WorkingSchedule[] workedHour) {
-        this.workedHour = workedHour;
-    }
 
     public String getPassword() {
         return password;
@@ -166,4 +135,51 @@ public class Employees {
         this.password = password;
     }
 
+    /**
+     * @return the salary
+     */
+    public Double getSalary() {
+        return salary;
+    }
+
+    /**
+     * @param salary the salary to set
+     */
+    public void setSalary(Double salary) {
+        this.salary = salary;
+    }
+
+    public void setNetSalary() {
+        this.salary -= deducciones();
+    }
+    public double deducciones() {
+
+        double deducciones = CCSS() + Impuesto();
+        System.out.println(deducciones);
+        return deducciones;
+    }
+
+    private double CCSS() {
+        return salary * 0.0984;
+    }
+
+    private double Impuesto() {
+        if (salary > 817000.0 && salary <= 1226000.0) {
+
+            return (salary - 817000.0) * 0.10;
+
+        } else if (salary > 1226000.0) {
+
+            return 40900.0 + ((salary - 1226000.0) * 0.15);
+
+        } else {
+            return 0.0;
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Employees{"+"name=" + name + ", ID=" + ID + ", address=" + address + ", phoneNumber=" + phoneNumber + ", workedHours=" + workedHours + ", email=" + email + ", salary=" + salary + '}';
+    }
+    
 }

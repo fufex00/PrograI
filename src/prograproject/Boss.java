@@ -5,6 +5,10 @@ import java.io.IOException;
 public class Boss extends Employees {
 
     private double bossSalary;
+
+    public Boss(double bossSalary) {
+        this.bossSalary = bossSalary;
+    }
     Administrator ad = new Administrator();
     public Principal data = new Principal();
 
@@ -18,9 +22,18 @@ public class Boss extends Employees {
         this.bonus = bonus;
     }
 
-    public Boss(double bossSalary) {
+    public Boss(double bossSalary, double bonus, String name, String ID, String adress, String phoneNumber, int workedHours, String email, String password, Double salary) {
+        super(name, ID, adress, phoneNumber, workedHours, email, password, salary);
         this.bossSalary = bossSalary;
+        this.bonus = bonus;
     }
+
+    public Boss(double bossSalary, double bonus, String name) {
+        super(name);
+        this.bossSalary = bossSalary;
+        this.bonus = bonus;
+    }
+
 
     /**
      * @return the bossSalary

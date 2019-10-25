@@ -14,23 +14,31 @@ public class Seller extends Employees {
         this.sellerSalary = sellerSalary;
     }
 
-    public Seller(int soldProducts, int bonus, double quantitySold) {
+    public Seller(int soldProducts, int bonus, double quantitySold, double sellerSalary) {
         this.soldProducts = soldProducts;
         this.bonus = bonus;
         this.quantitySold = quantitySold;
+        this.sellerSalary = sellerSalary;
     }
 
-    public Seller(int soldProducts, int bonus, double quantitySold, String name,
-            String ID, String adress, String phoneNumber, int workedHours,
-            String email, String password, Employees[] hiredEmployees,
-            WorkingSchedule[] workedHour) {
-        super(name, ID, adress, phoneNumber, workedHours, email, password,
-                hiredEmployees, workedHour);
+    public Seller(int soldProducts, int bonus, double quantitySold, double sellerSalary, String name, String ID, String adress, String phoneNumber, int workedHours, String email, String password, Double salary) {
+        super(name, ID, adress, phoneNumber, workedHours, email, password, salary);
         this.soldProducts = soldProducts;
         this.bonus = bonus;
         this.quantitySold = quantitySold;
+        this.sellerSalary = sellerSalary;
     }
 
+    public Seller(int soldProducts, int bonus, double quantitySold, double sellerSalary, String name) {
+        super(name);
+        this.soldProducts = soldProducts;
+        this.bonus = bonus;
+        this.quantitySold = quantitySold;
+        this.sellerSalary = sellerSalary;
+    }
+
+    
+    
     public Seller() {
     }
 

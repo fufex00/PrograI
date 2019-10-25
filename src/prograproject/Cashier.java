@@ -4,12 +4,20 @@ public class Cashier extends Employees {
 
     private double cashierSalary;
 
-    public Cashier() {
-    }
-
     public Cashier(double cashierSalary) {
         this.cashierSalary = cashierSalary;
     }
+
+    public Cashier(double cashierSalary, String name, String ID, String adress, String phoneNumber, int workedHours, String email, String password, Double salary) {
+        super(name, ID, adress, phoneNumber, workedHours, email, password, salary);
+        this.cashierSalary = cashierSalary;
+    }
+
+    public Cashier(double cashierSalary, String name) {
+        super(name);
+        this.cashierSalary = cashierSalary;
+    }
+
 
     /**
      * @return the cashierSalary
