@@ -10,7 +10,7 @@ public class Principal {
     public static Administrator admin = new Administrator("admin", "pass1");
     public static Boss boss = new Boss();
     public static Employees[] employeeData = new Employees[30];
-    public static int [] workedhours = new int [30];
+    public static int[] workedhours = new int[30];
     public static int counter = 0;
 
     public static void main(String[] args) throws IOException {
@@ -38,7 +38,8 @@ public class Principal {
         }
         for (int i = 0; i < counter; i++) {
             if ((employeeData[i].getID().equals(user) && employeeData[i].
-                    getPassword().equals(password)) && employeeData[i].getClass().getSimpleName().equals("Boss")) {
+                    getPassword().equals(password)) && employeeData[i].getClass()
+                    .getSimpleName().equals("Boss")) {
                 boss.Hiring();
             }
 
@@ -57,6 +58,7 @@ public class Principal {
     public static void sumCounter() {
         counter++;
     }
+
     public static void decreaseCounter() {
         counter--;
     }

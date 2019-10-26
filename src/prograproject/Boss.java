@@ -185,10 +185,9 @@ public class Boss extends Employees {
 
     }
 
-      private void modifyEmployee() throws IOException {
+    private void modifyEmployee() throws IOException {
         System.out.println("Módulo de Modificar Empleado");
         System.out.println("*****************************\n");
-        if (Principal.employeeData[0] != null) {
             System.out.println("Ingrese el ID del empleado");
             String entered = br.readLine();
             for (int i = 0; i < data.getCounter() && Principal.employeeData[i] != null; i++) {
@@ -207,51 +206,63 @@ public class Boss extends Employees {
                             System.out.println("Ingrese el nuevo nombre");
                             String name = br.readLine();
                             Principal.employeeData[i].setName(name);
+                            System.out.println("Hecho!");
+                            i=data.getCounter();
+                            Hiring();
                             break;
                         case "2":
                             System.out.println("Ingrese el nuevo ID");
                             String id = br.readLine();
                             Principal.employeeData[i].setID(id);
+                            System.out.println("Hecho!");
+                            i=data.getCounter();
+                            Hiring();
                             break;
                         case "3":
                             System.out.println("Ingrese la nueva dirección");
                             String dir = br.readLine();
                             Principal.employeeData[i].setAdress(dir);
+                            System.out.println("Hecho!");
+                            i=data.getCounter();
+                            Hiring();
                             break;
                         case "4":
                             System.out.println("Ingrese el nuevo # de telefono");
                             String phoneN = br.readLine();
                             Principal.employeeData[i].setPhoneNumber(phoneN);
+                            System.out.println("Hecho!");
+                            i=data.getCounter();
+                            Hiring();
                             break;
                         case "5":
                             System.out.println("Ingrese el nuevo e-Mail ");
                             String email = br.readLine();
                             Principal.employeeData[i].setEmail(email);
+                            System.out.println("Hecho!");
+                            i=data.getCounter();
+                            Hiring();
                             break;
                         case "6":
                             System.out.println("Ingrese la nueva contrasenia");
                             String pass = br.readLine();
                             Principal.employeeData[i].setPassword(pass);
+                            System.out.println("Hecho!");
+                            i=data.getCounter();
+                            Hiring();
                             break;
                         case "7":
+                            i=data.getCounter();
                             Hiring();
                             break;
                         default:
                             System.out.println("Ingrese un valor adecuado");
                             modifyEmployee();
                     }
-                } else {
-                    System.out.println("El ID del empleado no existe");
-                    modifyEmployee();
                 }
             }
-        } else {
-            System.out.println("La lista de empleados esta vacia.");
-            Hiring();
-        }
+          System.out.println("El usuario no existe");
     }
-
-
+      
     public void printEmployeelist() throws IOException {
         if (Principal.employeeData[0] == (null)) {
             System.out.println("La lista esta vacía");
