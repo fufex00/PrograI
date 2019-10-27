@@ -4,9 +4,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.text.DateFormat;
-import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -28,9 +28,20 @@ public class Employees {
     private int workedHours;
 
     private String email;
+
     private String password;
 
     private Double salary;
+
+    private String typeOfPayment;
+
+    public String getTypeOfPayment() {
+        return typeOfPayment;
+    }
+
+    public void setTypeOfPayment(String typeOfPayment) {
+        this.typeOfPayment = typeOfPayment;
+    }
 
     public Employees() {
     }
@@ -190,23 +201,24 @@ public class Employees {
     public String toString() {
         return "Employees{" + "name=" + name + ", ID=" + ID + ", address=" + address + ", phoneNumber=" + phoneNumber + ", workedHours=" + workedHours + ", email=" + email + ", salary=" + salary + '}';
     }
-
+//
 //    public DateFormat generateDate() {
 //        DateFormat date;
-//        DateFormat df = new SimpleDateFormat("HH:mm"); //"dd/MM/yy HH:mm:ss"
+//        DateFormat df = new SimpleDateFormat("HH:mm"); //"dd/MM/yy HH:mm:ss"        
 //        Calendar calobj = Calendar.getInstance();
+//        System.out.println("antes");
 //        System.out.println(df.format(calobj.getTime()));
-//        df.format(calobj.getTime());
+//        System.out.println("despues");
 //        date = df;
 //        return date;
-////    }
+//    }
+
 //    public int clockIn() {
 ////        Date date  = date;
 //        int a = 0;
 //        a = date.getHours();
 //        return a;
 //    }
-
     public void employeeMenu(String user, String password) {
         System.out.println("Bienvenido al Menú de Empleado");
         System.out.println("******************************\n");
@@ -230,22 +242,44 @@ public class Employees {
 
                     break;
                 case 4:
-
                     break;
                 case 5:
-
+                    chooseType();
+                    break;
+                case 6:
+                    try {
+                        System.out.println("Cerrando Sesión...");
+                        Thread.sleep(2000);
+                        Principal.login();
+                    } catch (InterruptedException ex) {
+                        System.err.println("Hubo un error.");
+                    }
                     break;
                 default:
                     System.out.println("Los valores ingresados no son correctos");
                     break;
             }
         } catch (IOException ex) {
-            Logger.getLogger(Employees.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
 
-    public void setHours() {
+    private void chooseType() {
+        try {
+            System.out.println("Por favor, seleccione una opcion:\n");
+            System.out.println("1. Deposito Directo");
+            System.out.println("2. Cheque");
+            System.out.println("3. Efectivo");
+            int selection = Integer.parseInt(br.readLine());
+            switch (selection) {
+                case 1:
 
+                    break;
+                default:
+                    throw new AssertionError();
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(Employees.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

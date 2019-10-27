@@ -35,17 +35,19 @@ public class Principal {
         if (employeeData != null) {
             if ((admin.getUser().equals(user)) && (admin.getPassword().equals(password))) {
                 admin.editFields();
-                login();
             }
             for (int i = 0; i < counter; i++) {
                 if ((employeeData[i].getID().equals(user) && employeeData[i].
                         getPassword().equals(password)) && employeeData[i].getClass()
                         .getSimpleName().equals("Boss")) {
-                    boss.Hiring();
+                    boss.hiring();
+                } else {
+                    if ((employeeData[i].getID().equals(user) && employeeData[i].
+                        getPassword().equals(password))) {
+                        emp.employeeMenu(user, password);
+                    }
                 }
             }
-        } else {
-            emp.employeeMenu(user, password);
         }
         System.out.println("Datos incorrectos y/o no existen trabajadores con estos credenciales");
         login();

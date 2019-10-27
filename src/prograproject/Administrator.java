@@ -3,8 +3,6 @@ package prograproject;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class Administrator extends Employees {
 
@@ -110,14 +108,12 @@ public class Administrator extends Employees {
                     System.out.println("Los valores ingresados no son correctos");
                     editFields();
             }
-        } catch (Exception e) {
-            System.out.println("Los valores ingresados no son correctos");
-            editFields();
+        } catch (IOException | NumberFormatException a) {
+            System.out.println("Los valores ingresados no son correctos 111");
         }
-
     }
 
-    public void addNewEmployee() {
+    private void addNewEmployee() throws IOException {
         System.out.println("Módulo agregar nuevo Empleado");
         System.out.println("***********************\n");
         System.out.println("1. Agregar un nuevo Jefe(a)");
@@ -169,7 +165,7 @@ public class Administrator extends Employees {
                     addNewEmployee();
                     break;
             }
-        } catch (IOException ex) {
+        } catch (NumberFormatException b) {
             System.out.println("Los valores ingresados no son correctos");
             addNewEmployee();
         }
@@ -330,7 +326,7 @@ public class Administrator extends Employees {
                     }
                     System.out.println("El usuario no existe");
                 }
-            } catch (IOException ex) {
+            } catch (IOException c) {
                 System.out.println("Los valores ingresados no son correctos");
                 editFields();
             }
@@ -448,7 +444,7 @@ public class Administrator extends Employees {
                     }
                     System.out.println("El usuario no existe");
                 }
-            } catch (IOException ex) {
+            } catch (IOException d) {
                 System.out.println("Los valores ingresados no son correctos");
                 editFields();
             }
@@ -468,6 +464,7 @@ public class Administrator extends Employees {
                 System.out.println("ID: " + Principal.employeeData[i].getID());
                 System.out.println("Dirección: " + Principal.employeeData[i].getAdress());
                 System.out.println("# de teléfono: " + Principal.employeeData[i].getPhoneNumber());
+                System.out.println("Tipo de pago seleccionado: " + Principal.employeeData[i].getTypeOfPayment());
                 System.out.println("***********************\n");
             }
         }
