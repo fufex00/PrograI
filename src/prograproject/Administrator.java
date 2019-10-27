@@ -3,6 +3,8 @@ package prograproject;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Administrator extends Employees {
 
@@ -115,56 +117,63 @@ public class Administrator extends Employees {
 
     }
 
-    private void addNewEmployee() throws IOException {
+    public void addNewEmployee() {
         System.out.println("Módulo agregar nuevo empleado");
         System.out.println("***********************\n");
-        System.out.println("1. Agregar un nuevo Jefe/a");
-        System.out.println("2. Agregar un nuevo Cajero/a");
-        System.out.println("3. Agregar un nuevo Miscelaneo/a");
-        System.out.println("4. Agregar un nuevo Organizador/a");
-        System.out.println("5. Agregar un nuevo Secretario/a");
-        System.out.println("6. Agregar un nuevo Vendedor/a");
+        System.out.println("1. Agregar un nuevo Jefe(a)");
+        System.out.println("2. Agregar un nuevo Cajero(a)");
+        System.out.println("3. Agregar un nuevo Miscelaneo(a)");
+        System.out.println("4. Agregar un nuevo Organizador(a)");
+        System.out.println("5. Agregar un nuevo Secretario(a)");
+        System.out.println("6. Agregar un nuevo Vendedor(a)");
         System.out.println("7. Regresar");
-        int selec = Integer.parseInt(br.readLine());
-        switch (selec) {
-            case 1:
-                Principal.employeeData[data.getCounter()] = addNewBoss();
-                Principal.sumCounter();
-                editFields();
-                break;
-            case 2:
-                Principal.employeeData[data.getCounter()] = addNewCashier();
-                Principal.sumCounter();
-                editFields();
-                break;
-            case 3:
-                Principal.employeeData[data.getCounter()] = addNewCleaningAttend();
-                Principal.sumCounter();
-                editFields();
-                break;
-            case 4:
-                Principal.employeeData[data.getCounter()] = addNewOrganizer();
-                Principal.sumCounter();
-                editFields();
-                break;
-            case 5:
-                Principal.employeeData[data.getCounter()] = addNewSecretary();
-                Principal.sumCounter();
-                editFields();
-                break;
-            case 6:
-                Principal.employeeData[data.getCounter()] = addNewSeller();
-                Principal.sumCounter();
-                editFields();
-                break;
-            case 7:
-                editFields();
-                break;
-            default:
-                System.out.println("Los valores ingresados no son correctos");
-                addNewEmployee();
-                break;
+        int selec;
+        try {
+            selec = Integer.parseInt(br.readLine());
+            switch (selec) {
+                case 1:
+                    Principal.employeeData[data.getCounter()] = addNewBoss();
+                    Principal.sumCounter();
+                    editFields();
+                    break;
+                case 2:
+                    Principal.employeeData[data.getCounter()] = addNewCashier();
+                    Principal.sumCounter();
+                    editFields();
+                    break;
+                case 3:
+                    Principal.employeeData[data.getCounter()] = addNewCleaningAttend();
+                    Principal.sumCounter();
+                    editFields();
+                    break;
+                case 4:
+                    Principal.employeeData[data.getCounter()] = addNewOrganizer();
+                    Principal.sumCounter();
+                    editFields();
+                    break;
+                case 5:
+                    Principal.employeeData[data.getCounter()] = addNewSecretary();
+                    Principal.sumCounter();
+                    editFields();
+                    break;
+                case 6:
+                    Principal.employeeData[data.getCounter()] = addNewSeller();
+                    Principal.sumCounter();
+                    editFields();
+                    break;
+                case 7:
+                    editFields();
+                    break;
+                default:
+                    System.out.println("Los valores ingresados no son correctos");
+                    addNewEmployee();
+                    break;
+            }
+        } catch (IOException ex) {
+            System.out.println("Los valores ingresados no son correctos");
+            addNewEmployee();
         }
+
     }
 
     private Employees addNewBoss() throws IOException {
@@ -173,7 +182,7 @@ public class Administrator extends Employees {
         String name = br.readLine();
         boss.setName(name);
         System.out.println("Digite el ID");
-        String id = br.readLine();
+        String id = br.readLine().toLowerCase();
         boss.setID(id);
         System.out.println("Ingrese la contraseña");
         String pass = br.readLine();
@@ -194,7 +203,7 @@ public class Administrator extends Employees {
         String name = br.readLine();
         cashier.setName(name);
         System.out.println("Digite el ID");
-        String id = br.readLine();
+        String id = br.readLine().toLowerCase();
         cashier.setID(id);
         System.out.println("Ingrese la contraseña");
         String pass = br.readLine();
@@ -215,7 +224,7 @@ public class Administrator extends Employees {
         String name = br.readLine();
         cleaningAtt.setName(name);
         System.out.println("Digite el ID");
-        String id = br.readLine();
+        String id = br.readLine().toLowerCase();
         cleaningAtt.setID(id);
         System.out.println("Ingrese la contraseña");
         String pass = br.readLine();
@@ -236,7 +245,7 @@ public class Administrator extends Employees {
         String name = br.readLine();
         organizer.setName(name);
         System.out.println("Digite el ID");
-        String id = br.readLine();
+        String id = br.readLine().toLowerCase();
         organizer.setID(id);
         System.out.println("Ingrese la contraseña");
         String pass = br.readLine();
@@ -257,7 +266,7 @@ public class Administrator extends Employees {
         String name = br.readLine();
         secretary.setName(name);
         System.out.println("Digite el ID");
-        String id = br.readLine();
+        String id = br.readLine().toLowerCase();
         secretary.setID(id);
         System.out.println("Ingrese la contraseña");
         String pass = br.readLine();
@@ -278,7 +287,7 @@ public class Administrator extends Employees {
         String name = br.readLine();
         seller.setName(name);
         System.out.println("Digite el ID");
-        String id = br.readLine();
+        String id = br.readLine().toLowerCase();
         seller.setID(id);
         System.out.println("Ingrese la contraseña");
         String pass = br.readLine();
@@ -293,121 +302,158 @@ public class Administrator extends Employees {
         return seller;
     }
 
- private void removeEmployee() throws IOException {
-        System.out.println("Módulo de Eliminar Empleado");
-        System.out.println("***********************\n");
-            System.out.println("Ingrese el ID del empleado");
-            String id = br.readLine();
-            for (int i = 0; i < data.getCounter(); i++) {
-                if (id.equals(Principal.employeeData[i].getID())) {
-                    for(int a=i;a<=data.getCounter();a++){
-                        if (a==data.getCounter()){
-                            Principal.employeeData[a]=null;
-                            System.out.println("Empleado eliminado con exito\n");
-                            Principal.decreaseCounter();
-                            editFields();
-                        }else{
-                        Principal.employeeData[a]=Principal.employeeData[a+1];
+    private void removeEmployee() throws IOException {
+        if (Principal.employeeData[0] == null) {
+            System.out.println("La lista esta vacía");
+        } else {
+            try {
+                System.out.println("Módulo de Eliminar Empleado");
+                System.out.println("***********************\n");
+                System.out.println("Ingrese el ID del empleado o " + "\"s\" " + " para salir");
+                String id = br.readLine().toLowerCase();
+                if (id.equals("s")) {
+                    editFields();
+                } else {
+                    for (int i = 0; i < data.getCounter(); i++) {
+                        if (id.equals(Principal.employeeData[i].getID())) {
+                            for (int a = i; a <= data.getCounter(); a++) {
+                                if (a == data.getCounter()) {
+                                    Principal.employeeData[a] = null;
+                                    System.out.println("Empleado eliminado con exito\n");
+                                    Principal.decreaseCounter();
+                                    editFields();
+                                } else {
+                                    Principal.employeeData[a] = Principal.employeeData[a + 1];
+                                }
+                            }
                         }
-                   }
+                    }
+                    System.out.println("El usuario no exite");
                 }
-            }
-            System.out.println("el usuario no exite");
-    }
-    
-    private void searchEmployee() throws IOException {
-        System.out.println("Módulo buscar Empleado");
-        System.out.println("***********************\n");
-        System.out.println("Ingrese el ID del empleado");
-        String id = br.readLine();
-        for (int i = 0; i < data.getCounter(); i++) {
-            if (id.equals(Principal.employeeData[i].getID())) {
-                System.out.println("Nombre: " + Principal.employeeData[i].getName());
-                System.out.println("ID: " + Principal.employeeData[i].getID());
+            } catch (IOException ex) {
+                System.out.println("Los valores ingresados no son correctos");
                 editFields();
             }
         }
-        System.out.println("El empleado no existe");
+
+    }
+
+    private void searchEmployee() throws IOException {
+        if (Principal.employeeData[0] == null) {
+            System.out.println("La lista esta vacía");
+        } else {
+            System.out.println("Módulo buscar Empleado");
+            System.out.println("***********************\n");
+            System.out.println("Ingrese el ID del empleado o " + "\"s\" " + " para salir");
+            String id = br.readLine().toLowerCase();
+            if (id.equals("s")) {
+                editFields();
+            } else {
+                for (int i = 0; i < data.getCounter(); i++) {
+                    if (id.equals(Principal.employeeData[i].getID())) {
+                        System.out.println("Nombre: " + Principal.employeeData[i].getName());
+                        System.out.println("ID: " + Principal.employeeData[i].getID());
+                        editFields();
+                    }
+                }
+                System.out.println("El empleado no existe");
+
+            }
+        }
 
     }
 
     private void modifyEmployee() throws IOException {
-        System.out.println("Módulo de Modificar Empleado");
-        System.out.println("*****************************\n");
-        System.out.println("Ingrese el ID del empleado");
-        String entered = br.readLine();
-        for (int i = 0; i < data.getCounter() && Principal.employeeData[i] != null; i++) {
-            if (entered.equals(Principal.employeeData[i].getID())) {
-                System.out.println("¿Qué datos desea modificar del empleado?\n");
-                System.out.println("1. Nombre");
-                System.out.println("2. ID");
-                System.out.println("3. Dirección");
-                System.out.println("4. # de teléfono");
-                System.out.println("5. Correo Electronico");
-                System.out.println("6. Contrasenia");
-                System.out.println("7. Cancelar");
-                int selec = Integer.parseInt(br.readLine());
-                switch (selec) {
-                    case 1:
-                        System.out.println("Ingrese el nuevo nombre");
-                        String name = br.readLine();
-                        Principal.employeeData[i].setName(name);
-                        System.out.println("Hecho!");
-                        i = data.getCounter();
-                        editFields();
-                        break;
-                    case 2:
-                        System.out.println("Ingrese el nuevo ID");
-                        String id = br.readLine();
-                        Principal.employeeData[i].setID(id);
-                        System.out.println("Hecho!");
-                        i = data.getCounter();
-                        editFields();
-                        break;
-                    case 3:
-                        System.out.println("Ingrese la nueva dirección");
-                        String dir = br.readLine();
-                        Principal.employeeData[i].setAdress(dir);
-                        System.out.println("Hecho!");
-                        i = data.getCounter();
-                        editFields();
-                        break;
-                    case 4:
-                        System.out.println("Ingrese el nuevo # de telefono");
-                        String phoneN = br.readLine();
-                        Principal.employeeData[i].setPhoneNumber(phoneN);
-                        System.out.println("Hecho!");
-                        i = data.getCounter();
-                        editFields();
-                        break;
-                    case 5:
-                        System.out.println("Ingrese el nuevo e-Mail ");
-                        String email = br.readLine();
-                        Principal.employeeData[i].setEmail(email);
-                        System.out.println("Hecho!");
-                        i = data.getCounter();
-                        editFields();
-                        break;
-                    case 6:
-                        System.out.println("Ingrese la nueva contrasenia");
-                        String pass = br.readLine();
-                        Principal.employeeData[i].setPassword(pass);
-                        System.out.println("Hecho!");
-                        i = data.getCounter();
-                        editFields();
-                        break;
-                    case 7:
-                        i = data.getCounter();
-                        editFields();
-                        break;
-                    default:
-                        System.out.println("Ingrese un valor adecuado");
-                        modifyEmployee();
-                        break;
+        if (Principal.employeeData[0] == null) {
+            System.out.println("La lista esta vacía");
+        } else {
+            try {
+                System.out.println("Módulo de Modificar Empleado");
+                System.out.println("*****************************\n");
+                System.out.println("Ingrese el ID del empleado o " + "\"s\" " + " para salir");
+                String entered = br.readLine().toLowerCase();
+                if (entered.equals("s")) {
+                    editFields();
+                } else {
+                    for (int i = 0; i < data.getCounter() && Principal.employeeData[i] != null; i++) {
+                        if (entered.equals(Principal.employeeData[i].getID())) {
+                            System.out.println("¿Qué datos desea modificar del empleado?\n");
+                            System.out.println("1. Nombre");
+                            System.out.println("2. ID");
+                            System.out.println("3. Dirección");
+                            System.out.println("4. # de teléfono");
+                            System.out.println("5. Correo Electronico");
+                            System.out.println("6. Contrasenia");
+                            System.out.println("7. Cancelar");
+                            int selec = Integer.parseInt(br.readLine());
+                            switch (selec) {
+                                case 1:
+                                    System.out.println("Ingrese el nuevo nombre");
+                                    String name = br.readLine();
+                                    Principal.employeeData[i].setName(name);
+                                    System.out.println("Hecho!");
+                                    i = data.getCounter();
+                                    editFields();
+                                    break;
+                                case 2:
+                                    System.out.println("Ingrese el nuevo ID");
+                                    String id = br.readLine();
+                                    Principal.employeeData[i].setID(id);
+                                    System.out.println("Hecho!");
+                                    i = data.getCounter();
+                                    editFields();
+                                    break;
+                                case 3:
+                                    System.out.println("Ingrese la nueva dirección");
+                                    String dir = br.readLine();
+                                    Principal.employeeData[i].setAdress(dir);
+                                    System.out.println("Hecho!");
+                                    i = data.getCounter();
+                                    editFields();
+                                    break;
+                                case 4:
+                                    System.out.println("Ingrese el nuevo # de telefono");
+                                    String phoneN = br.readLine();
+                                    Principal.employeeData[i].setPhoneNumber(phoneN);
+                                    System.out.println("Hecho!");
+                                    i = data.getCounter();
+                                    editFields();
+                                    break;
+                                case 5:
+                                    System.out.println("Ingrese el nuevo e-Mail ");
+                                    String email = br.readLine();
+                                    Principal.employeeData[i].setEmail(email);
+                                    System.out.println("Hecho!");
+                                    i = data.getCounter();
+                                    editFields();
+                                    break;
+                                case 6:
+                                    System.out.println("Ingrese la nueva contrasenia");
+                                    String pass = br.readLine();
+                                    Principal.employeeData[i].setPassword(pass);
+                                    System.out.println("Hecho!");
+                                    i = data.getCounter();
+                                    editFields();
+                                    break;
+                                case 7:
+                                    i = data.getCounter();
+                                    editFields();
+                                    break;
+                                default:
+                                    System.out.println("Ingrese un valor adecuado");
+                                    modifyEmployee();
+                                    break;
+                            }
+                        }
+                    }
+                    System.out.println("El usuario no existe");
                 }
+            } catch (IOException ex) {
+                System.out.println("Los valores ingresados no son correctos");
+                editFields();
             }
         }
-        System.out.println("El usuario no existe");
+
     }
 
     private void printEmployeelist() throws IOException {
@@ -426,10 +472,11 @@ public class Administrator extends Employees {
             }
         }
     }
-        public static void preLoad() {
+
+    public static void preLoad() {
         Employees boss = new Boss("Pepe", "123", "200 noroeste de la "
                 + "municipalidad de Golfito", "86057093", 160, "pepeman@gmail.com",
-                 "456", 4000000.00);
+                "456", 4000000.00);
         Employees secre = new Secretary("Camila", "578", "Pavas, Heredia, Costa "
                 + "Rica", "84759687", 85, "cami_24@hotmail.com", "911", 316800.00);
         Employees clean = new CleaningAttendant("Justin", "450", "Barrio Parroquial, "

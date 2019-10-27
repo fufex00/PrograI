@@ -70,7 +70,7 @@ public class Boss extends Employees {
         System.out.println("3. Buscar Empleado");
         System.out.println("4. Modificar Empleado");
         System.out.println("5. Ver lista de Empleados");
-        System.out.println("6. Salir");                        // aqui se debe agregar los valores que faltan en la descripcion del proyecto
+        System.out.println("6. Salir");
         int selec = Integer.parseInt(br.readLine());
         switch (selec) {
             case 1:

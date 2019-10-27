@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.text.DateFormat;
+import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.logging.Level;
@@ -14,7 +15,7 @@ public class Employees {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     public String clockIn = "";
     public String clockOut = "";
-    public DateFormat a;
+    Date date = new Date();
 
     private String name;
 
@@ -190,15 +191,21 @@ public class Employees {
         return "Employees{" + "name=" + name + ", ID=" + ID + ", address=" + address + ", phoneNumber=" + phoneNumber + ", workedHours=" + workedHours + ", email=" + email + ", salary=" + salary + '}';
     }
 
-    public DateFormat generateDate() {
-        DateFormat date;
-        DateFormat df = new SimpleDateFormat("HH:mm:ss"); //"dd/MM/yy HH:mm:ss"
-        Calendar calobj = Calendar.getInstance();
-        System.out.println(df.format(calobj.getTime()));
-        df.format(calobj.getTime());
-        date = df;
-        return date;
-    }
+//    public DateFormat generateDate() {
+//        DateFormat date;
+//        DateFormat df = new SimpleDateFormat("HH:mm"); //"dd/MM/yy HH:mm:ss"
+//        Calendar calobj = Calendar.getInstance();
+//        System.out.println(df.format(calobj.getTime()));
+//        df.format(calobj.getTime());
+//        date = df;
+//        return date;
+////    }
+//    public int clockIn() {
+////        Date date  = date;
+//        int a = 0;
+//        a = date.getHours();
+//        return a;
+//    }
 
     public void employeeMenu(String user, String password) {
         System.out.println("Bienvenido al Menú de Empleado");
@@ -214,7 +221,7 @@ public class Employees {
             selec = Integer.parseInt(br.readLine());
             switch (selec) {
                 case 1:
- 
+
                     break;
                 case 2:
 

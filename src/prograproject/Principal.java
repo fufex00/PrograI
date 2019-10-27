@@ -15,7 +15,6 @@ public class Principal {
     public static int counter = 0;
 
     public static void main(String[] args) throws IOException {
-        System.out.println(emp.generateDate());
         System.out.println("**********************************");
         System.out.println("*   Bienvenido a la Verduleria   *");
         System.out.println("**********************************");
@@ -33,24 +32,25 @@ public class Principal {
     }
 
     private static void verifyLogin(String user, String password) throws IOException {
-
-        if ((admin.getUser().equals(user)) && (admin.getPassword().equals(password))) {
-            admin.editFields();
-            login();
-        }
-        for (int i = 0; i < counter; i++) {
-            if ((employeeData[i].getID().equals(user) && employeeData[i].
-                    getPassword().equals(password)) && employeeData[i].getClass()
-                    .getSimpleName().equals("Boss")) {
-                boss.Hiring();
-            } else {
-                emp.employeeMenu(user, password);
+        if (employeeData != null) {
+            if ((admin.getUser().equals(user)) && (admin.getPassword().equals(password))) {
+                admin.editFields();
+                login();
             }
-
+            for (int i = 0; i < counter; i++) {
+                if ((employeeData[i].getID().equals(user) && employeeData[i].
+                        getPassword().equals(password)) && employeeData[i].getClass()
+                        .getSimpleName().equals("Boss")) {
+                    boss.Hiring();
+                }
+            }
+        } else {
+            emp.employeeMenu(user, password);
         }
-
+        System.out.println("Datos incorrectos y/o no existen trabajadores con estos credenciales");
+        login();
     }
-    
+
     public int getCounter() {
         return counter;
     }
