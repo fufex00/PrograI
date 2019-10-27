@@ -63,7 +63,7 @@ public class Boss extends Employees {
 
     public void Hiring() throws IOException {
 
-        System.out.println("Modulo Jefe");
+        System.out.println("Módulo Jefe");
         System.out.println("***********************\n");
         System.out.println("1. Insertar nuevo Empleado");
         System.out.println("2. Eliminar Empleado");
@@ -108,10 +108,10 @@ public class Boss extends Employees {
     }
 
     private void addNewEmployee() throws IOException {
-        System.out.println("Módulo agregar nuevo empleado");
+        System.out.println("Módulo agregar nuevo Empleado");
         System.out.println("***********************\n");
         System.out.println("1. Agregar un nuevo Cajero/a");
-        System.out.println("2. Agregar un nuevo Miscelaneo/a");
+        System.out.println("2. Agregar un nuevo Misceláneo/a");
         System.out.println("3. Agregar un nuevo Organizador/a");
         System.out.println("4. Agregar un nuevo Secretario/a");
         System.out.println("5. Agregar un nuevo Vendedor/a");
@@ -169,7 +169,7 @@ public class Boss extends Employees {
                     for(int a=i;a<=data.getCounter();a++){
                         if (a==data.getCounter()){
                             Principal.employeeData[a]=null;
-                            System.out.println("Empleado eliminado con exito\n");
+                            System.out.println("Empleado eliminado con éxito\n");
                             Principal.decreaseCounter();
                             Hiring();
                         }else{
@@ -179,7 +179,7 @@ public class Boss extends Employees {
                 }
                 } else{
                     if (i==data.getCounter()-1){ 
-                        System.out.println("el usuario no exite");
+                        System.out.println("el usuario no existe");
                     }
                 }
             
@@ -189,7 +189,7 @@ public class Boss extends Employees {
     private void searchEmployee() throws IOException {
         System.out.println("Módulo buscar Empleado");
         System.out.println("***********************\n");
-        System.out.println("Ingrese el ID del empleado");
+        System.out.println("Ingrese el ID del Empleado");
         String id = br.readLine();
         for (int i = 0; i < data.getCounter(); i++) {
             if (id.equals(Principal.employeeData[i].getID())) {
@@ -205,7 +205,7 @@ public class Boss extends Employees {
     private void modifyEmployee() throws IOException {
         System.out.println("Módulo de Modificar Empleado");
         System.out.println("*****************************\n");
-            System.out.println("Ingrese el ID del empleado");
+            System.out.println("Ingrese el ID del Empleado");
             String entered = br.readLine();
             for (int i = 0; i < data.getCounter() && Principal.employeeData[i] != null; i++) {
                 if (entered.equals(Principal.employeeData[i].getID())) {
@@ -214,8 +214,8 @@ public class Boss extends Employees {
                     System.out.println("2. ID");
                     System.out.println("3. Dirección");
                     System.out.println("4. # de teléfono");
-                    System.out.println("5. Correo Electronico");
-                    System.out.println("6. Contrasenia");
+                    System.out.println("5. Correo Electrónico");
+                    System.out.println("6. Contraseña");
                     System.out.println("7. Cancelar");
                     int selec = Integer.parseInt(br.readLine());
                     switch (selec) {
@@ -244,7 +244,7 @@ public class Boss extends Employees {
                             Hiring();
                             break;
                         case 4:
-                            System.out.println("Ingrese el nuevo # de telefono");
+                            System.out.println("Ingrese el nuevo # de teléfono");
                             String phoneN = br.readLine();
                             Principal.employeeData[i].setPhoneNumber(phoneN);
                             System.out.println("Hecho!");
@@ -260,7 +260,7 @@ public class Boss extends Employees {
                             Hiring();
                             break;
                         case 6:
-                            System.out.println("Ingrese la nueva contrasenia");
+                            System.out.println("Ingrese la nueva contraseña");
                             String pass = br.readLine();
                             Principal.employeeData[i].setPassword(pass);
                             System.out.println("Hecho!");
@@ -282,7 +282,7 @@ public class Boss extends Employees {
       
     public void printEmployeelist() throws IOException {
         if (Principal.employeeData[0] == (null)) {
-            System.out.println("La lista esta vacía");
+            System.out.println("La lista está vacía");
             Hiring();
         } else {
             for (int i = 0; i < data.getCounter(); i++) {
