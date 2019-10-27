@@ -464,7 +464,6 @@ public class Administrator extends Employees {
                 System.out.println("ID: " + Principal.employeeData[i].getID());
                 System.out.println("Dirección: " + Principal.employeeData[i].getAdress());
                 System.out.println("# de teléfono: " + Principal.employeeData[i].getPhoneNumber());
-                System.out.println("Tipo de pago seleccionado: " + Principal.employeeData[i].getTypeOfPayment());
                 System.out.println("***********************\n");
             }
         }

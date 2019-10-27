@@ -44,7 +44,7 @@ public class Principal {
                 } else {
                     if ((employeeData[i].getID().equals(user) && employeeData[i].
                         getPassword().equals(password))) {
-                        emp.employeeMenu(user, password);
+                        emp.employeeMenu(user);
                     }
                 }
             }
