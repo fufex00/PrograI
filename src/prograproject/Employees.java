@@ -197,18 +197,18 @@ public class Employees {
             selec = Integer.parseInt(br.readLine());
             switch (selec) {
                 case 1:
-                    inhours();
-                    inminutes();
+                    inHours();
+                    inMinutes();
                     System.out.println(workedHour);
                     employeeMenu(user);
                     break;
                 case 2:
-                    outhours();
-                    outminutes();
+                    outHours();
+                    outMinutes();
                     System.out.println(workedHour);
                     searchEmployee(user).setWorkedHours(workedHour);
                     for (int i = 0; i < data.getCounter() && Principal.employeeData[i] != null; i++) {
-                        if (Principal.employeeData[i].equals(user)) {
+                        if (Principal.employeeData[i].getID().equals(user)) {
                             System.out.println(Principal.employeeData[i].getWorkedHours());
                         }
                     }
@@ -218,7 +218,7 @@ public class Employees {
                 case 3:
                     System.out.println(user);
                     for (int i = 0; i < data.getCounter() && Principal.employeeData[i] != null; i++) {
-                        if (Principal.employeeData[i].equals(user)) {
+                        if (Principal.employeeData[i].getID().equals(user)) {
                             System.out.println(Principal.employeeData[i].getName());
                         }
                     }
@@ -265,28 +265,26 @@ public class Employees {
     int temporalminutes = 0;
     public int workedHour = 0;
 
-    public int inhours() {
-        String fechaComoCadena = hour.format(new Date());
-        inh = Integer.parseInt(fechaComoCadena);
+    String dateAsAString = min.format(new Date());
+
+    public int inHours() {
+        inh = Integer.parseInt(dateAsAString);
         return inh;
     }
 
-    public int outhours() {
-        String fechaComoCadena = hour.format(new Date());
-        outh = Integer.parseInt(fechaComoCadena);
+    public int outHours() {
+        outh = Integer.parseInt(dateAsAString);
         return outh;
     }
 
-    public int inminutes() {
-        String fechaComoCadena = min.format(new Date());
-        inm = Integer.parseInt(fechaComoCadena);
+    public int inMinutes() {
+        inm = Integer.parseInt(dateAsAString);
 
         return inm;
     }
 
-    public int outminutes() {
-        String fechaComoCadena = min.format(new Date());
-        outm = Integer.parseInt(fechaComoCadena);
+    public int outMinutes() {
+        outm = Integer.parseInt(dateAsAString);
         return outm;
     }
 
