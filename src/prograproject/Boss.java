@@ -22,10 +22,8 @@ public class Boss extends Employees {
         this.bonus = bonus;
     }
 
-    public Boss(double bossSalary, double bonus, String name, String ID, String adress, String phoneNumber, int workedHours, String email, String password, Double salary) {
-        super(name, ID, adress, phoneNumber, workedHours, email, password, salary);
-        this.bossSalary = bossSalary;
-        this.bonus = bonus;
+    public Boss(String name, String ID, String address, String phoneNumber, int workedHours, String email, String password, Double salary) {
+        super(name, ID, address, phoneNumber, workedHours, email, password, salary);
     }
 
     public Boss(double bossSalary, double bonus, String name) {
@@ -73,29 +71,29 @@ public class Boss extends Employees {
         System.out.println("4. Modificar Empleado");
         System.out.println("5. Ver lista de Empleados");
         System.out.println("6. Salir");                        // aqui se debe agregar los valores que faltan en la descripcion del proyecto
-        String selec = br.readLine();
+        int selec = Integer.parseInt(br.readLine());
         switch (selec) {
-            case "1":
+            case 1:
                 addNewEmployee();
                 Hiring();
                 break;
-            case "2":
+            case 2:
                 removeEmployee();
                 Hiring();
                 break;
-            case "3":
+            case 3:
                 searchEmployee();
                 Hiring();
                 break;
-            case "4":
+            case 4:
                 modifyEmployee();
                 Hiring();
                 break;
-            case "5":
+            case 5:
                 printEmployeelist();
                 Hiring();
                 break;
-            case "6":
+            case 6:
                 try {
                     System.out.println("Cerrando Sesión...");
                     Thread.sleep(2000);
@@ -118,34 +116,34 @@ public class Boss extends Employees {
         System.out.println("4. Agregar un nuevo Secretario/a");
         System.out.println("5. Agregar un nuevo Vendedor/a");
         System.out.println("6. Regresar");
-        String selec = br.readLine();
+        int selec = Integer.parseInt(br.readLine());
         switch (selec) {
-            case "1":
+            case 1:
                 Principal.employeeData[data.getCounter()] = ad.addNewCashier();
                 Principal.sumCounter();
                 Hiring();
                 break;
-            case "2":
+            case 2:
                 Principal.employeeData[data.getCounter()] = ad.addNewCleaningAttend();
                 Principal.sumCounter();
                 Hiring();
                 break;
-            case "3":
+            case 3:
                 Principal.employeeData[data.getCounter()] = ad.addNewOrganizer();
                 Principal.sumCounter();
                 Hiring();
                 break;
-            case "4":
+            case 4:
                 Principal.employeeData[data.getCounter()] = ad.addNewSecretary();
                 Principal.sumCounter();
                 Hiring();
                 break;
-            case "5":
+            case 5:
                 Principal.employeeData[data.getCounter()] = ad.addNewSeller();
                 Principal.sumCounter();
                 Hiring();
                 break;
-            case "6":
+            case 6:
                 Hiring();
                 break;
             default:
@@ -154,19 +152,38 @@ public class Boss extends Employees {
         }
     }
 
-    public void removeEmployee() throws IOException {
-        System.out.println("Módulo de Eliminar Empleado");
-        System.out.println("****************************\n");
-        System.out.println("Ingrese el ID del empleado");
-        String id = br.readLine();
-        int a = 0;
-        for (int i = 0; i < data.getCounter(); i++) {
-            if (id.equals(Principal.employeeData[i].getID())) {
-            } else {
-                System.out.println("Este Empleado no existe");
-                searchEmployee();
+  public void removeEmployee() throws IOException {
+       System.out.println("Módulo de Eliminar Empleado");
+        System.out.println("***********************\n");
+            System.out.println("Ingrese el ID del empleado");
+            String id = br.readLine();
+            for (int i = 0; i < data.getCounter(); i++) {
+               System.out.println(Principal.employeeData[i].getClass().getSimpleName());
+                if (id.equals(Principal.employeeData[i].getID())) {
+                
+                if (Principal.employeeData[i].getClass().getSimpleName().equals("Boss")){
+                System.out.println("Este usuario no se puede eliminar");
+                Hiring();
+                }else{
+                    
+                    for(int a=i;a<=data.getCounter();a++){
+                        if (a==data.getCounter()){
+                            Principal.employeeData[a]=null;
+                            System.out.println("Empleado eliminado con exito\n");
+                            Principal.decreaseCounter();
+                            Hiring();
+                        }else{
+                        Principal.employeeData[a]=Principal.employeeData[a+1];
+                        }
+                   }
+                }
+                } else{
+                    if (i==data.getCounter()-1){ 
+                        System.out.println("el usuario no exite");
+                    }
+                }
+            
             }
-        }
     }
 
     private void searchEmployee() throws IOException {
@@ -200,9 +217,9 @@ public class Boss extends Employees {
                     System.out.println("5. Correo Electronico");
                     System.out.println("6. Contrasenia");
                     System.out.println("7. Cancelar");
-                    String selec = br.readLine();
+                    int selec = Integer.parseInt(br.readLine());
                     switch (selec) {
-                        case "1":
+                        case 1:
                             System.out.println("Ingrese el nuevo nombre");
                             String name = br.readLine();
                             Principal.employeeData[i].setName(name);
@@ -210,7 +227,7 @@ public class Boss extends Employees {
                             i=data.getCounter();
                             Hiring();
                             break;
-                        case "2":
+                        case 2:
                             System.out.println("Ingrese el nuevo ID");
                             String id = br.readLine();
                             Principal.employeeData[i].setID(id);
@@ -218,7 +235,7 @@ public class Boss extends Employees {
                             i=data.getCounter();
                             Hiring();
                             break;
-                        case "3":
+                        case 3:
                             System.out.println("Ingrese la nueva dirección");
                             String dir = br.readLine();
                             Principal.employeeData[i].setAdress(dir);
@@ -226,7 +243,7 @@ public class Boss extends Employees {
                             i=data.getCounter();
                             Hiring();
                             break;
-                        case "4":
+                        case 4:
                             System.out.println("Ingrese el nuevo # de telefono");
                             String phoneN = br.readLine();
                             Principal.employeeData[i].setPhoneNumber(phoneN);
@@ -234,7 +251,7 @@ public class Boss extends Employees {
                             i=data.getCounter();
                             Hiring();
                             break;
-                        case "5":
+                        case 5:
                             System.out.println("Ingrese el nuevo e-Mail ");
                             String email = br.readLine();
                             Principal.employeeData[i].setEmail(email);
@@ -242,7 +259,7 @@ public class Boss extends Employees {
                             i=data.getCounter();
                             Hiring();
                             break;
-                        case "6":
+                        case 6:
                             System.out.println("Ingrese la nueva contrasenia");
                             String pass = br.readLine();
                             Principal.employeeData[i].setPassword(pass);
@@ -250,7 +267,7 @@ public class Boss extends Employees {
                             i=data.getCounter();
                             Hiring();
                             break;
-                        case "7":
+                        case 7:
                             i=data.getCounter();
                             Hiring();
                             break;

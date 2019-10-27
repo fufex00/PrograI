@@ -66,47 +66,53 @@ public class Administrator extends Employees {
         System.out.println("3. Buscar Empleado");
         System.out.println("4. Modificar Empleado");
         System.out.println("5. Ver lista de Empleados");
-        System.out.println("7. Precargar datos");
-        System.out.println("6. Salir");
-        String selec = br.readLine();
-        switch (selec) {
-            case "1":
-                addNewEmployee();
-                editFields();
-                break;
-            case "2":
-                removeEmployee();
-                editFields();
-                break;
-            case "3":
-                searchEmployee();
-                editFields();
-                break;
-            case "4":
-                modifyEmployee();
-                editFields();
-                break;
-            case "5":
-                printEmployeelist();
-                editFields();
-                break;
-            case "6":
-                try {
-                    System.out.println("Cerrando Sesión...");
-                    Thread.sleep(500);
-                    Principal.login();
-                } catch (InterruptedException ex) {
-                    System.err.println("Hubo un error.");
-                }
-                break;
-            case "7":
-                preLoad();
-                editFields();
-                break;
-            default:
-                System.out.println("Los valores ingresados no son correctos");
-                editFields();
+        System.out.println("6. Precargar datos");
+        System.out.println("7. Salir");
+        try {
+            int selec = Integer.parseInt(br.readLine());
+            switch (selec) {
+                case 1:
+                    addNewEmployee();
+                    editFields();
+                    break;
+                case 2:
+                    removeEmployee();
+                    editFields();
+                    break;
+                case 3:
+                    searchEmployee();
+                    editFields();
+                    break;
+                case 4:
+                    modifyEmployee();
+                    editFields();
+                    break;
+                case 5:
+                    printEmployeelist();
+                    editFields();
+                    break;
+                case 6:
+                    preLoad();
+                    editFields();
+                    break;
+                case 7:
+                    try {
+                        System.out.println("Cerrando Sesión...");
+                        Thread.sleep(500);
+                        Principal.login();
+                    } catch (InterruptedException ex) {
+                        System.err.println("Hubo un error.");
+                    }
+                    break;
+                default:
+                    System.out.println("Los valores ingresados no son correctos");
+                    editFields();
+            }
+        } catch (Exception e) {
+            System.out.println("Los valores ingresados no son correctos");
+            editFields();
         }
+
     }
 
     private void addNewEmployee() throws IOException {
@@ -119,44 +125,45 @@ public class Administrator extends Employees {
         System.out.println("5. Agregar un nuevo Secretario/a");
         System.out.println("6. Agregar un nuevo Vendedor/a");
         System.out.println("7. Regresar");
-        String selec = br.readLine();
+        int selec = Integer.parseInt(br.readLine());
         switch (selec) {
-            case "1":
+            case 1:
                 Principal.employeeData[data.getCounter()] = addNewBoss();
                 Principal.sumCounter();
                 editFields();
                 break;
-            case "2":
+            case 2:
                 Principal.employeeData[data.getCounter()] = addNewCashier();
                 Principal.sumCounter();
                 editFields();
                 break;
-            case "3":
+            case 3:
                 Principal.employeeData[data.getCounter()] = addNewCleaningAttend();
                 Principal.sumCounter();
                 editFields();
                 break;
-            case "4":
+            case 4:
                 Principal.employeeData[data.getCounter()] = addNewOrganizer();
                 Principal.sumCounter();
                 editFields();
                 break;
-            case "5":
+            case 5:
                 Principal.employeeData[data.getCounter()] = addNewSecretary();
                 Principal.sumCounter();
                 editFields();
                 break;
-            case "6":
+            case 6:
                 Principal.employeeData[data.getCounter()] = addNewSeller();
                 Principal.sumCounter();
                 editFields();
                 break;
-            case "7":
+            case 7:
                 editFields();
                 break;
             default:
                 System.out.println("Los valores ingresados no son correctos");
                 addNewEmployee();
+                break;
         }
     }
 
@@ -286,30 +293,28 @@ public class Administrator extends Employees {
         return seller;
     }
 
-    private void removeEmployee() throws IOException {
+ private void removeEmployee() throws IOException {
         System.out.println("Módulo de Eliminar Empleado");
-        System.out.println("****************************\n");
-        System.out.println("Ingrese el ID del empleado");
-        String id = br.readLine();
-        if (Principal.employeeData[0] != null) {
+        System.out.println("***********************\n");
             System.out.println("Ingrese el ID del empleado");
-            for (int i = 0; i < data.getCounter() && Principal.employeeData[i] != null; i++) {
+            String id = br.readLine();
+            for (int i = 0; i < data.getCounter(); i++) {
                 if (id.equals(Principal.employeeData[i].getID())) {
-                    Principal.employeeData[i] = null;
-                    System.out.println("El empleado fue eliminado.");
-                    editFields();
-                } else {
-                    System.out.println("Este Empleado no existe");
-                    searchEmployee();
+                    for(int a=i;a<=data.getCounter();a++){
+                        if (a==data.getCounter()){
+                            Principal.employeeData[a]=null;
+                            System.out.println("Empleado eliminado con exito\n");
+                            Principal.decreaseCounter();
+                            editFields();
+                        }else{
+                        Principal.employeeData[a]=Principal.employeeData[a+1];
+                        }
+                   }
                 }
             }
-        } else {
-            System.out.println("La lista de empleados esta vacia.");
-            editFields();
-        }
-
+            System.out.println("el usuario no exite");
     }
-
+    
     private void searchEmployee() throws IOException {
         System.out.println("Módulo buscar Empleado");
         System.out.println("***********************\n");
@@ -341,9 +346,9 @@ public class Administrator extends Employees {
                 System.out.println("5. Correo Electronico");
                 System.out.println("6. Contrasenia");
                 System.out.println("7. Cancelar");
-                String selec = br.readLine();
+                int selec = Integer.parseInt(br.readLine());
                 switch (selec) {
-                    case "1":
+                    case 1:
                         System.out.println("Ingrese el nuevo nombre");
                         String name = br.readLine();
                         Principal.employeeData[i].setName(name);
@@ -351,7 +356,7 @@ public class Administrator extends Employees {
                         i = data.getCounter();
                         editFields();
                         break;
-                    case "2":
+                    case 2:
                         System.out.println("Ingrese el nuevo ID");
                         String id = br.readLine();
                         Principal.employeeData[i].setID(id);
@@ -359,7 +364,7 @@ public class Administrator extends Employees {
                         i = data.getCounter();
                         editFields();
                         break;
-                    case "3":
+                    case 3:
                         System.out.println("Ingrese la nueva dirección");
                         String dir = br.readLine();
                         Principal.employeeData[i].setAdress(dir);
@@ -367,7 +372,7 @@ public class Administrator extends Employees {
                         i = data.getCounter();
                         editFields();
                         break;
-                    case "4":
+                    case 4:
                         System.out.println("Ingrese el nuevo # de telefono");
                         String phoneN = br.readLine();
                         Principal.employeeData[i].setPhoneNumber(phoneN);
@@ -375,7 +380,7 @@ public class Administrator extends Employees {
                         i = data.getCounter();
                         editFields();
                         break;
-                    case "5":
+                    case 5:
                         System.out.println("Ingrese el nuevo e-Mail ");
                         String email = br.readLine();
                         Principal.employeeData[i].setEmail(email);
@@ -383,7 +388,7 @@ public class Administrator extends Employees {
                         i = data.getCounter();
                         editFields();
                         break;
-                    case "6":
+                    case 6:
                         System.out.println("Ingrese la nueva contrasenia");
                         String pass = br.readLine();
                         Principal.employeeData[i].setPassword(pass);
@@ -391,13 +396,14 @@ public class Administrator extends Employees {
                         i = data.getCounter();
                         editFields();
                         break;
-                    case "7":
+                    case 7:
                         i = data.getCounter();
                         editFields();
                         break;
                     default:
                         System.out.println("Ingrese un valor adecuado");
                         modifyEmployee();
+                        break;
                 }
             }
         }
@@ -420,12 +426,23 @@ public class Administrator extends Employees {
             }
         }
     }
-
-    private void preLoad() {
-        Employees boss = new Employees("Steve", "123", "200 noroeste de la municipalidad de Golfito", "86057093", 160, "456", "456", 900000.00);
+        public static void preLoad() {
+        Employees boss = new Boss("Pepe", "123", "200 noroeste de la "
+                + "municipalidad de Golfito", "86057093", 160, "pepeman@gmail.com",
+                 "456", 4000000.00);
+        Employees secre = new Secretary("Camila", "578", "Pavas, Heredia, Costa "
+                + "Rica", "84759687", 85, "cami_24@hotmail.com", "911", 316800.00);
+        Employees clean = new CleaningAttendant("Justin", "450", "Barrio Parroquial, "
+                + "Golfito, Puntarenas, Costa "
+                + "Rica", "87463758", 150, "jus_tin342@gmail.com", "424", 2000000.00);
         Principal.employeeData[0] = boss;
-        Principal.employeeData[0].setNetSalary();
-        System.out.println(Principal.employeeData[0].getSalary());
+        Principal.sumCounter();
+        Principal.employeeData[1] = secre;
+        Principal.sumCounter();
+        Principal.employeeData[2] = clean;
+        Principal.sumCounter();
+        System.out.println("Empleados agregados.");
+//      Principal.employeeData[0].setNetSalary();
+//      System.out.println(Principal.employeeData[0].getSalary());
     }
-
 }

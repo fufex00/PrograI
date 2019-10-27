@@ -1,11 +1,13 @@
 package prograproject;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Employees {
 
@@ -193,5 +195,44 @@ public class Employees {
         df.format(calobj.getTime());
         date = df;
         return date;
+    }
+
+    public void employeeMenu() {
+        System.out.println("Bienvenido al Menú de Empleado");
+        System.out.println("******************************\n");
+        System.out.println("1. Marcar hora de entrada");
+        System.out.println("2. Marcar hora de salida");
+        System.out.println("3. Cambiar contraseña");
+        System.out.println("4. Ver horas trabajadas");
+        System.out.println("5. Tipo de pago");
+        System.out.println("6. Salir");
+        int selec;
+        try {
+            selec = Integer.parseInt(br.readLine());
+            switch (selec) {
+                case 1:
+
+                    break;
+                case 2:
+
+                    break;
+                case 3:
+
+                    break;
+                case 4:
+
+                    break;
+                case 5:
+
+                    break;
+                default:
+                    System.out.println("Los valores ingresados no son correctos");
+                    employeeMenu();
+                    break;
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(Employees.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 }

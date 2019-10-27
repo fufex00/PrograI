@@ -8,9 +8,8 @@ public class CleaningAttendant extends Employees {
         this.cleaningSalary = cleaningSalary;
     }
 
-    public CleaningAttendant(double cleaningSalary, String name, String ID, String adress, String phoneNumber, int workedHours, String email, String password, Double salary) {
+    public CleaningAttendant(String name, String ID, String adress, String phoneNumber, int workedHours, String email, String password, Double salary) {
         super(name, ID, adress, phoneNumber, workedHours, email, password, salary);
-        this.cleaningSalary = cleaningSalary;
     }
 
     public CleaningAttendant(double cleaningSalary, String name) {

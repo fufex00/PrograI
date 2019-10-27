@@ -9,6 +9,7 @@ public class Principal {
     public static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     public static Administrator admin = new Administrator("admin", "pass1");
     public static Boss boss = new Boss();
+    public static Employees emp = new Employees();
     public static Employees[] employeeData = new Employees[30];
     public static int[] workedhours = new int[30];
     public static int counter = 0;
@@ -41,12 +42,14 @@ public class Principal {
                     getPassword().equals(password)) && employeeData[i].getClass()
                     .getSimpleName().equals("Boss")) {
                 boss.Hiring();
+            } else {
+                emp.employeeMenu();
             }
 
         }
 
     }
-
+    
     public int getCounter() {
         return counter;
     }
@@ -61,17 +64,5 @@ public class Principal {
 
     public static void decreaseCounter() {
         counter--;
-    }
-
-    public void printPositionTable() {
-    }
-
-    public void vacations() {
-    }
-
-    public void clockInClockOut() {
-    }
-
-    public void printPayrollTable() {
     }
 }
