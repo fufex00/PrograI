@@ -15,6 +15,7 @@ public class Principal {
     public static int counter = 0;
 
     public static void main(String[] args) throws IOException {
+        System.out.println(emp.generateDate());
         System.out.println("**********************************");
         System.out.println("*   Bienvenido a la Verduleria   *");
         System.out.println("**********************************");
@@ -43,7 +44,7 @@ public class Principal {
                     .getSimpleName().equals("Boss")) {
                 boss.Hiring();
             } else {
-                emp.employeeMenu();
+                emp.employeeMenu(user, password);
             }
 
         }

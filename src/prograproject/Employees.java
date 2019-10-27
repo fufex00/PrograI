@@ -12,7 +12,9 @@ import java.util.logging.Logger;
 public class Employees {
 
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    public int count = 0;
+    public String clockIn = "";
+    public String clockOut = "";
+    public DateFormat a;
 
     private String name;
 
@@ -155,12 +157,12 @@ public class Employees {
     }
 
     public void setNetSalary() {
-        this.salary -= deducciones();
+        this.salary -= deductions();
     }
 
-    public double deducciones() {
+    public double deductions() {
 
-        double deducciones = CCSS() + Impuesto();
+        double deducciones = CCSS() + taxes();
         System.out.println(deducciones);
         return deducciones;
     }
@@ -169,7 +171,7 @@ public class Employees {
         return salary * 0.0984;
     }
 
-    private double Impuesto() {
+    private double taxes() {
         if (salary > 817000.0 && salary <= 1226000.0) {
 
             return (salary - 817000.0) * 0.10;
@@ -188,8 +190,9 @@ public class Employees {
         return "Employees{" + "name=" + name + ", ID=" + ID + ", address=" + address + ", phoneNumber=" + phoneNumber + ", workedHours=" + workedHours + ", email=" + email + ", salary=" + salary + '}';
     }
 
-    public DateFormat generateDate(DateFormat date) {
-        DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
+    public DateFormat generateDate() {
+        DateFormat date;
+        DateFormat df = new SimpleDateFormat("HH:mm:ss"); //"dd/MM/yy HH:mm:ss"
         Calendar calobj = Calendar.getInstance();
         System.out.println(df.format(calobj.getTime()));
         df.format(calobj.getTime());
@@ -197,7 +200,7 @@ public class Employees {
         return date;
     }
 
-    public void employeeMenu() {
+    public void employeeMenu(String user, String password) {
         System.out.println("Bienvenido al Menú de Empleado");
         System.out.println("******************************\n");
         System.out.println("1. Marcar hora de entrada");
@@ -211,7 +214,7 @@ public class Employees {
             selec = Integer.parseInt(br.readLine());
             switch (selec) {
                 case 1:
-
+ 
                     break;
                 case 2:
 
@@ -227,12 +230,15 @@ public class Employees {
                     break;
                 default:
                     System.out.println("Los valores ingresados no son correctos");
-                    employeeMenu();
                     break;
             }
         } catch (IOException ex) {
             Logger.getLogger(Employees.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+    }
+
+    public void setHours() {
 
     }
 }
