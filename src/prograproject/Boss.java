@@ -10,6 +10,7 @@ public class Boss extends Employees {
         this.bossSalary = bossSalary;
     }
     Administrator ad = new Administrator();
+    Employees empData = new Employees();
     public Principal data = new Principal();
 
     private double bonus;
@@ -29,7 +30,7 @@ public class Boss extends Employees {
     public Boss(String name, String ID, String adress, String phoneNumber, int workedHours, String email, String password, Double salary, Double allDeductions) {
         super(name, ID, adress, phoneNumber, workedHours, email, password, salary, allDeductions);
     }
-    
+
     public Boss(double bossSalary, double bonus, String name) {
         super(name);
         this.bossSalary = bossSalary;
@@ -98,7 +99,8 @@ public class Boss extends Employees {
                     hiring();
                     break;
                 case 6:
-                    
+                    printPayroll();
+                    hiring();
                     break;
                 case 7:
                     try {
@@ -209,7 +211,7 @@ public class Boss extends Employees {
                 }
             }
         } catch (IOException h) {
-            System.out.println("Valores incorrectos, intente otra vez  11111");
+            System.out.println("Valores incorrectos, intente otra vez");
             hiring();
         }
     }
@@ -233,7 +235,7 @@ public class Boss extends Employees {
             }
 
         } catch (IOException i) {
-            System.out.println("Valores incorrectos, intente otra vez  22222");
+            System.out.println("Valores incorrectos, intente otra vez");
             hiring();
         }
     }
@@ -335,6 +337,19 @@ public class Boss extends Employees {
             System.out.println("***********************\n");
         }
 
+    }
+
+    private void printPayroll() {
+        for (int i = 0; i < data.getCounter(); i++) {
+            System.out.println("Posición : " + Principal.employeeData[i].getClass().getSimpleName());
+            System.out.println("Nombre: " + Principal.employeeData[i].getName());
+            System.out.println("ID: " + Principal.employeeData[i].getID());
+            System.out.println("Horas trabajadas: " + Principal.employeeData[i].getWorkedHours());
+            System.out.println("Salario Bruto: " + Principal.employeeData[i].getSalary());
+            Principal.employeeData[i].setNetSalary();
+            System.out.println("Salario Neto: " + Principal.employeeData[i].getSalary());
+            System.out.println("***********************\n");
+        }
     }
 
 }

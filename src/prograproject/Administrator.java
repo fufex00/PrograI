@@ -509,10 +509,10 @@ public class Administrator extends Employees {
                 + "municipalidad de Golfito", "86057093", 160, "pepeman@gmail.com",
                 "456", 400000.00);
         Employees secre = new Secretary("Camila", "578", "Pavas, Heredia, Costa "
-                + "Rica", "84759687", 85, "cami_24@hotmail.com", "911", 316800.00);
+                + "Rica", "84759687", 120, "cami_24@hotmail.com", "911", 237600.00);
         Employees clean = new CleaningAttendant("Justin", "450", "Barrio Parroquial, "
                 + "Golfito, Puntarenas, Costa "
-                + "Rica", "87463758", 150, "jus_tin342@gmail.com", "424", 2000000.00);
+                + "Rica", "87463758", 85, "jus_tin342@gmail.com", "424", 106250.00);
         Principal.employeeData[0] = boss;
         Principal.sumCounter();
         Principal.employeeData[1] = secre;
@@ -521,10 +521,10 @@ public class Administrator extends Employees {
         Principal.sumCounter();
         
         System.out.println("Empleados agregados.");
-        System.out.println("deducciones");
-        Principal.employeeData[0].setNetSalary();
-        System.out.println("salario total");
-        System.out.println(Principal.employeeData[0].getSalary());
+        
+//        Principal.employeeData[0].setNetSalary();
+//        System.out.println("salario total");
+//        System.out.println(Principal.employeeData[0].getSalary());
     }
 
     public Boolean verifyTakenUser(String id) {

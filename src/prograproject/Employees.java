@@ -169,6 +169,10 @@ public class Employees {
         this.allDeductions = allDeductions + deductions();
     }
 
+    public void setDeductions(){
+       this.allDeductions += deductions(); 
+    }
+    
     public void setNetSalary() {
         this.salary -= deductions();
     }
@@ -176,7 +180,7 @@ public class Employees {
     public double deductions() {
 
         double deductions = CCSS() + taxes();
-//        System.out.println(deductions);
+        System.out.println("Deducciones: " + deductions);
         return deductions;
     }
 
@@ -227,14 +231,7 @@ public class Employees {
                     outMinutes();
                     calculateMinutesInt();
                     calculateHoursInt();
-                    System.out.println(workedHour);
                     searchEmployee(user).setWorkedHours(workedHour);
-                    for (int i = 0; i < data.getCounter() && Principal.employeeData[i] != null; i++) {
-                        if (Principal.employeeData[i].getID().equals(user)) {
-                            System.out.println(Principal.employeeData[i].getWorkedHours());
-                        }
-                    }
-                    System.out.println(workedHour);
                     employeeMenu(user, password);
                     break;
                 case 3:
