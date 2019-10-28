@@ -37,6 +37,10 @@ public class Seller extends Employees {
         this.sellerSalary = sellerSalary;
     }
 
+    public Seller(String name, String ID, String adress, String phoneNumber, int workedHours, String email, String password, Double salary, Double allDeductions) {
+        super(name, ID, adress, phoneNumber, workedHours, email, password, salary, allDeductions);
+    }
+
     
     
     public Seller() {

@@ -25,8 +25,11 @@ public class Principal {
     public static void login() throws IOException {
         System.out.println("Ingrese su ID: ");
         String user = br.readLine();
+        if (user.equals("exit")) {
+            System.exit(0);
+        }
         System.out.println("Ingrese su contraseña");
-        String pass = br.readLine();
+        String pass = br.readLine().toLowerCase();
 
         verifyLogin(user, pass);
     }
@@ -43,8 +46,8 @@ public class Principal {
                     boss.hiring();
                 } else {
                     if ((employeeData[i].getID().equals(user) && employeeData[i].
-                        getPassword().equals(password))) {
-                        emp.employeeMenu(user);
+                            getPassword().equals(password))) {
+                        emp.employeeMenu(user, password);
                     }
                 }
             }

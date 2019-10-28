@@ -12,6 +12,10 @@ public class CleaningAttendant extends Employees {
         super(name, ID, adress, phoneNumber, workedHours, email, password, salary);
     }
 
+    public CleaningAttendant(String name, String ID, String adress, String phoneNumber, int workedHours, String email, String password, Double salary, Double allDeductions) {
+        super(name, ID, adress, phoneNumber, workedHours, email, password, salary, allDeductions);
+    }
+
     public CleaningAttendant(double cleaningSalary, String name) {
         super(name);
         this.cleaningSalary = cleaningSalary;

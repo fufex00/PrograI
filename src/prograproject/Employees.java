@@ -4,8 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.Date;
 
 public class Employees {
@@ -23,6 +21,7 @@ public class Employees {
     private String email;
     private String password;
     private Double salary;
+    private Double allDeductions;
 
     public Employees() {
     }
@@ -37,6 +36,19 @@ public class Employees {
         this.email = email;
         this.password = password;
         this.salary = salary;
+    }
+    
+    public Employees(String name, String ID, String adress, String phoneNumber,
+            int workedHours, String email, String password, Double salary, Double allDeductions) {
+        this.name = name;
+        this.ID = ID;
+        this.address = adress;
+        this.phoneNumber = phoneNumber;
+        this.workedHours = workedHours;
+        this.email = email;
+        this.password = password;
+        this.salary = salary;
+        this.allDeductions = allDeductions;
     }
 
     public Employees(String name) {
@@ -149,22 +161,30 @@ public class Employees {
         this.salary = salary;
     }
 
-    public void setNetSalary() {
-        this.salary -= deducciones();
+    public Double getAllDeductions() {
+        return allDeductions;
     }
 
-    public double deducciones() {
+    public void setAllDeductions(Double allDeductions) {
+        this.allDeductions = allDeductions + deductions();
+    }
 
-        double deducciones = CCSS() + Impuesto();
-        System.out.println(deducciones);
-        return deducciones;
+    public void setNetSalary() {
+        this.salary -= deductions();
+    }
+
+    public double deductions() {
+
+        double deductions = CCSS() + taxes();
+//        System.out.println(deductions);
+        return deductions;
     }
 
     private double CCSS() {
         return salary * 0.0984;
     }
 
-    private double Impuesto() {
+    private double taxes() {
         if (salary > 817000.0 && salary <= 1226000.0) {
 
             return (salary - 817000.0) * 0.10;
@@ -180,18 +200,18 @@ public class Employees {
 
     @Override
     public String toString() {
-        return "Employees{" + "name=" + name + ", ID=" + ID + ", address=" + address + ", phoneNumber=" + phoneNumber + ", workedHours=" + workedHours + ", email=" + email + ", salary=" + salary + '}';
-    }
+        return "Employees{" + "name=" + name + ", ID=" + ID + ", workedHours=" + workedHours + ", salary=" + salary + ", allDeductions=" + allDeductions + '}';
+    }  
 
-    public void employeeMenu(String user) throws IOException {
-        System.out.println("Bienvenido al Menú de Empleado");
+    public void employeeMenu(String user, String password) throws IOException {
+        System.out.println("Bienvenido(a) al Menú de Empleado " + searchEmployee(user)
+                .getName());
         System.out.println("******************************\n");
         System.out.println("1. Marcar hora de entrada");
         System.out.println("2. Marcar hora de salida");
         System.out.println("3. Cambiar contraseña");
         System.out.println("4. Ver horas trabajadas");
-        System.out.println("5. Tipo de pago");
-        System.out.println("6. Salir");
+        System.out.println("5. Salir");
         int selec;
         try {
             selec = Integer.parseInt(br.readLine());
@@ -200,11 +220,13 @@ public class Employees {
                     inHours();
                     inMinutes();
                     System.out.println(workedHour);
-                    employeeMenu(user);
+                    employeeMenu(user, password);
                     break;
                 case 2:
                     outHours();
                     outMinutes();
+                    calculateMinutesInt();
+                    calculateHoursInt();
                     System.out.println(workedHour);
                     searchEmployee(user).setWorkedHours(workedHour);
                     for (int i = 0; i < data.getCounter() && Principal.employeeData[i] != null; i++) {
@@ -213,32 +235,39 @@ public class Employees {
                         }
                     }
                     System.out.println(workedHour);
-                    employeeMenu(user);
+                    employeeMenu(user, password);
                     break;
                 case 3:
-                    System.out.println(user);
-                    for (int i = 0; i < data.getCounter() && Principal.employeeData[i] != null; i++) {
-                        if (Principal.employeeData[i].getID().equals(user)) {
-                            System.out.println(Principal.employeeData[i].getName());
-                        }
+                    System.out.println("Ingrese su contraseña actual:");
+                    String pass = br.readLine();
+                    if (password.equals(pass)) {
+                        System.out.println("Ingrese su nueva contraseña:");
+                        String newPass = br.readLine();
+                        searchEmployee(user).setPassword(newPass);
                     }
+                    System.out.println("La contraseña es incorrecta, intentelo otra vez");
+                    employeeMenu(user, password);
                     break;
                 case 4:
-
-                    System.out.println("Horas:" + workedHour);
+                    System.out.println("Horas trabajadas: " + searchEmployee(user).getWorkedHours());
+                    employeeMenu(user, password);
                     break;
                 case 5:
-
+                    try {
+                        System.out.println("Cerrando Sesión...");
+                        Thread.sleep(500);
+                        Principal.login();
+                    } catch (InterruptedException ex) {
+                        System.err.println("Hubo un error.");
+                    }
                     break;
-                case 6:
-                    Principal.login();
                 default:
-                    System.out.println("Los valores ingresados no son correctos");
-
-                    break;
+                    System.out.println("No ingreso un valor adecuado, intentelo de nuevo.\n");
+                    employeeMenu(user, password);
             }
         } catch (NumberFormatException rr) {
-            Logger.getLogger(Employees.class.getName()).log(Level.SEVERE, null, rr);
+            System.out.println("Los valores ingresados son incorrectos");
+            employeeMenu(user, password);
         }
     }
 
@@ -259,8 +288,8 @@ public class Employees {
     public int outh = 0;
     public int inm = 0;
     public int outm;
-    public int workedminutes = 0;
-    public int dayhours = 0;
+    public int workedMinutes = 0;
+    public int dayHours = 0;
     public int dayMinutes = 0;
     int temporalminutes = 0;
     public int workedHour = 0;
@@ -289,27 +318,27 @@ public class Employees {
     }
 
     public int calculateHoursInt() {
-        dayhours = outh - inh;
-        workedHour = workedHour + dayhours;
+        dayHours = outh - inh;
+        workedHour = workedHour + dayHours;
 
         return workedHour;
     }
 
     public int calculateMinutesInt() {
         dayMinutes = outm - inm;
-        workedminutes = workedminutes + dayMinutes;
-        if (workedminutes == 60) {
-            temporalminutes = workedminutes / 60;
+        workedMinutes = workedMinutes + dayMinutes;
+        if (workedMinutes == 60) {
+            temporalminutes = workedMinutes / 60;
             workedHour = temporalminutes + workedHour;
-            workedminutes = workedminutes % 60;
+            workedMinutes = workedMinutes % 60;
         }
-        if (workedminutes > 60) {
-            temporalminutes = workedminutes / 60;
+        if (workedMinutes > 60) {
+            temporalminutes = workedMinutes / 60;
             workedHour = temporalminutes + workedHour;
-            workedminutes = workedminutes % 60;
+            workedMinutes = workedMinutes % 60;
         }
 
-        return workedminutes;
+        return workedMinutes;
     }
 
 }

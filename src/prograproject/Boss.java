@@ -26,6 +26,10 @@ public class Boss extends Employees {
         super(name, ID, address, phoneNumber, workedHours, email, password, salary);
     }
 
+    public Boss(String name, String ID, String adress, String phoneNumber, int workedHours, String email, String password, Double salary, Double allDeductions) {
+        super(name, ID, adress, phoneNumber, workedHours, email, password, salary, allDeductions);
+    }
+    
     public Boss(double bossSalary, double bonus, String name) {
         super(name);
         this.bossSalary = bossSalary;
@@ -68,7 +72,8 @@ public class Boss extends Employees {
         System.out.println("3. Buscar Empleado");
         System.out.println("4. Modificar Empleado");
         System.out.println("5. Ver lista de Empleados");
-        System.out.println("6. Salir");
+        System.out.println("6. Imprimir planilla");
+        System.out.println("7. Salir");
         try {
             int select = Integer.parseInt(br.readLine());
             switch (select) {
@@ -93,6 +98,9 @@ public class Boss extends Employees {
                     hiring();
                     break;
                 case 6:
+                    
+                    break;
+                case 7:
                     try {
                         System.out.println("Cerrando Sesión...");
                         Thread.sleep(2000);

@@ -16,6 +16,10 @@ public class Organizer extends Employees {
         this.organizerSalary = organizerSalary;
     }
 
+    public Organizer(String name, String ID, String adress, String phoneNumber, int workedHours, String email, String password, Double salary, Double allDeductions) {
+        super(name, ID, adress, phoneNumber, workedHours, email, password, salary, allDeductions);
+    }
+
     public Organizer(double organizerSalary, String name) {
         super(name);
         this.organizerSalary = organizerSalary;

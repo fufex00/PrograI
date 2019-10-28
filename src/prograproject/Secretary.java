@@ -15,6 +15,10 @@ public class Secretary extends Employees {
         super(name, ID, adress, phoneNumber, workedHours, email, password, salary);
     }
 
+    public Secretary(String name, String ID, String adress, String phoneNumber, int workedHours, String email, String password, Double salary, Double allDeductions) {
+        super(name, ID, adress, phoneNumber, workedHours, email, password, salary, allDeductions);
+    }
+
     public Secretary(double secretarySalary, String name) {
         super(name);
         this.secretarySalary = secretarySalary;

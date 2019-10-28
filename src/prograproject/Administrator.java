@@ -47,6 +47,7 @@ public class Administrator extends Employees {
     /**
      * @return the password
      */
+    @Override
     public String getPassword() {
         return password;
     }
@@ -54,6 +55,7 @@ public class Administrator extends Employees {
     /**
      * @param password the password to set
      */
+    @Override
     public void setPassword(String password) {
         this.password = password;
     }
@@ -179,6 +181,11 @@ public class Administrator extends Employees {
         boss.setName(name);
         System.out.println("Digite el ID");
         String id = br.readLine().toLowerCase();
+        while (verifyTakenUser(id)) {
+            System.out.println("Este ID ya fue utilizado, ingrese otro: ");
+            id = br.readLine();
+            verifyTakenUser(id);
+        }
         boss.setID(id);
         System.out.println("Ingrese la contraseña");
         String pass = br.readLine();
@@ -200,6 +207,11 @@ public class Administrator extends Employees {
         cashier.setName(name);
         System.out.println("Digite el ID");
         String id = br.readLine().toLowerCase();
+        while (verifyTakenUser(id)) {
+            System.out.println("Este ID ya fue utilizado, ingrese otro: ");
+            id = br.readLine();
+            verifyTakenUser(id);
+        }
         cashier.setID(id);
         System.out.println("Ingrese la contraseña");
         String pass = br.readLine();
@@ -221,6 +233,11 @@ public class Administrator extends Employees {
         cleaningAtt.setName(name);
         System.out.println("Digite el ID");
         String id = br.readLine().toLowerCase();
+        while (verifyTakenUser(id)) {
+            System.out.println("Este ID ya fue utilizado, ingrese otro: ");
+            id = br.readLine();
+            verifyTakenUser(id);
+        }
         cleaningAtt.setID(id);
         System.out.println("Ingrese la contraseña");
         String pass = br.readLine();
@@ -242,6 +259,11 @@ public class Administrator extends Employees {
         organizer.setName(name);
         System.out.println("Digite el ID");
         String id = br.readLine().toLowerCase();
+        while (verifyTakenUser(id)) {
+            System.out.println("Este ID ya fue utilizado, ingrese otro: ");
+            id = br.readLine();
+            verifyTakenUser(id);
+        }
         organizer.setID(id);
         System.out.println("Ingrese la contraseña");
         String pass = br.readLine();
@@ -263,6 +285,11 @@ public class Administrator extends Employees {
         secretary.setName(name);
         System.out.println("Digite el ID");
         String id = br.readLine().toLowerCase();
+        while (verifyTakenUser(id)) {
+            System.out.println("Este ID ya fue utilizado, ingrese otro: ");
+            id = br.readLine();
+            verifyTakenUser(id);
+        }
         secretary.setID(id);
         System.out.println("Ingrese la contraseña");
         String pass = br.readLine();
@@ -284,6 +311,11 @@ public class Administrator extends Employees {
         seller.setName(name);
         System.out.println("Digite el ID");
         String id = br.readLine().toLowerCase();
+        while (verifyTakenUser(id)) {
+            System.out.println("Este ID ya fue utilizado, ingrese otro: ");
+            id = br.readLine();
+            verifyTakenUser(id);
+        }
         seller.setID(id);
         System.out.println("Ingrese la contraseña");
         String pass = br.readLine();
@@ -459,11 +491,14 @@ public class Administrator extends Employees {
         } else {
             for (int i = 0; i < data.getCounter() && Principal.employeeData[i] != null; i++) {
                 System.out.println("***********************");
-                System.out.println("Posición : " + Principal.employeeData[i].getClass().getSimpleName());
+                System.out.println("Posición : " + Principal.employeeData[i]
+                        .getClass().getSimpleName());
                 System.out.println("Nombre: " + Principal.employeeData[i].getName());
                 System.out.println("ID: " + Principal.employeeData[i].getID());
-                System.out.println("Dirección: " + Principal.employeeData[i].getAdress());
-                System.out.println("# de teléfono: " + Principal.employeeData[i].getPhoneNumber());
+                System.out.println("Dirección: " + Principal.employeeData[i]
+                        .getAdress());
+                System.out.println("# de teléfono: " + Principal.employeeData[i]
+                        .getPhoneNumber());
                 System.out.println("***********************\n");
             }
         }
@@ -472,7 +507,7 @@ public class Administrator extends Employees {
     public static void preLoad() {
         Employees boss = new Boss("Pepe", "123", "200 noroeste de la "
                 + "municipalidad de Golfito", "86057093", 160, "pepeman@gmail.com",
-                "456", 4000000.00);
+                "456", 400000.00);
         Employees secre = new Secretary("Camila", "578", "Pavas, Heredia, Costa "
                 + "Rica", "84759687", 85, "cami_24@hotmail.com", "911", 316800.00);
         Employees clean = new CleaningAttendant("Justin", "450", "Barrio Parroquial, "
@@ -484,8 +519,20 @@ public class Administrator extends Employees {
         Principal.sumCounter();
         Principal.employeeData[2] = clean;
         Principal.sumCounter();
+        
         System.out.println("Empleados agregados.");
-//      Principal.employeeData[0].setNetSalary();
-//      System.out.println(Principal.employeeData[0].getSalary());
+        System.out.println("deducciones");
+        Principal.employeeData[0].setNetSalary();
+        System.out.println("salario total");
+        System.out.println(Principal.employeeData[0].getSalary());
+    }
+
+    public Boolean verifyTakenUser(String id) {
+        for (int i = 0; i < data.getCounter(); i++) {
+            if (id.equals(Principal.employeeData[i].getID())) {
+                return true;
+            }
+        }
+        return false;
     }
 }

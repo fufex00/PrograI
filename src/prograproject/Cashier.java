@@ -13,6 +13,10 @@ public class Cashier extends Employees {
         this.cashierSalary = cashierSalary;
     }
 
+    public Cashier(String name, String ID, String adress, String phoneNumber, int workedHours, String email, String password, Double salary, Double allDeductions) {
+        super(name, ID, adress, phoneNumber, workedHours, email, password, salary, allDeductions);
+    }
+    
     public Cashier(double cashierSalary, String name) {
         super(name);
         this.cashierSalary = cashierSalary;
