@@ -33,6 +33,7 @@ public class Principal {
 
         verifyLogin(user, pass);
     }
+//este metodo se encargar de designar que tipo de empleado es para ir a su respectivo modulo
 
     private static void verifyLogin(String user, String password) throws IOException {
         if (employeeData != null) {

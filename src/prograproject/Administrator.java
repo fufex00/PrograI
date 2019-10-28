@@ -9,10 +9,10 @@ public class Administrator extends Employees {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     public Principal data = new Principal();
 
-    private String user;
-    private String password;
-    public Employees createdEmployess[] = new Employees[20];
     public int j = 0;
+    public Employees createdEmployess[] = new Employees[20];
+    private String password;
+    private String user;
 
     public int getJ() {
         return j;

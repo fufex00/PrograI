@@ -4,18 +4,19 @@ import java.io.IOException;
 
 public class Boss extends Employees {
 
-    private double bossSalary;
 
-    public Boss(double bossSalary) {
-        this.bossSalary = bossSalary;
-    }
+    public Principal data = new Principal();
     Administrator ad = new Administrator();
     Employees empData = new Employees();
-    public Principal data = new Principal();
 
     private double bonus;
+    private double bossSalary;
 
     public Boss() {
+    }
+    
+    public Boss(double bossSalary) {
+        this.bossSalary = bossSalary;
     }
 
     public Boss(double bossSalary, double bonus) {
