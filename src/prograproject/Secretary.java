@@ -38,6 +38,5 @@ public class Secretary extends Employees {
      */
     public void setSecretarySalary(double secretarySalary) {
         this.secretarySalary = secretarySalary;
-    }
-    
+    }   
 }

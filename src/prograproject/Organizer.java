@@ -38,6 +38,5 @@ public class Organizer extends Employees {
      */
     public void setOrganizerSalary(double organizerSalary) {
         this.organizerSalary = organizerSalary;
-    }
-    
+    }    
 }

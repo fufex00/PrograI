@@ -13,15 +13,18 @@ public class Employees {
 
     SimpleDateFormat hour = new SimpleDateFormat("HH");
     SimpleDateFormat min = new SimpleDateFormat("mm");
-    private String name;
-    private String ID;
-    private String address;
-    private String phoneNumber;
     private int workedHours;
-    private String email;
-    private String password;
-    private Double salary;
     private Double allDeductions;
+    private Double salary;
+    private String address;
+    private String email;
+    private String ID;
+    private String name;
+    private String password;
+    private String phoneNumber;
+    
+    
+  
 
     public Employees() {
     }
@@ -206,13 +209,14 @@ public class Employees {
     public String toString() {
         return "Employees{" + "name=" + name + ", ID=" + ID + ", workedHours=" + workedHours + ", salary=" + salary + ", allDeductions=" + allDeductions + '}';
     }  
-
+    
+//Menú exclusivo de Empleado con su respectivo usuario.
     public void employeeMenu(String user, String password) throws IOException {
         System.out.println("Bienvenido(a) al Menú de Empleado " + searchEmployee(user)
                 .getName());
         System.out.println("******************************\n");
         System.out.println("1. Marcar hora de entrada");
-        System.out.println("2. Marcar hora de salida");
+        System.out.println("2. Marcar hora de salida");                         //Opciones de menú para Empleado.
         System.out.println("3. Cambiar contraseña");
         System.out.println("4. Ver horas trabajadas");
         System.out.println("5. Salir");
@@ -242,7 +246,7 @@ public class Employees {
                         String newPass = br.readLine();
                         searchEmployee(user).setPassword(newPass);
                     }
-                    System.out.println("La contraseña es incorrecta, intentelo otra vez");
+                    System.out.println("La contraseña es incorrecta, inténtelo otra vez");
                     employeeMenu(user, password);
                     break;
                 case 4:
@@ -259,7 +263,7 @@ public class Employees {
                     }
                     break;
                 default:
-                    System.out.println("No ingreso un valor adecuado, intentelo de nuevo.\n");
+                    System.out.println("No ingreso un valor adecuado, inténtelo de nuevo.\n");
                     employeeMenu(user, password);
             }
         } catch (NumberFormatException rr) {
@@ -267,7 +271,8 @@ public class Employees {
             employeeMenu(user, password);
         }
     }
-
+    
+//Permite buscar al Empleado.
     private Employees searchEmployee(String user) {
         for (int i = 0; i < data.getCounter() && Principal.employeeData[i] != null; i++) {
             if (Principal.employeeData[i].getID().equals(user)) {
@@ -337,5 +342,4 @@ public class Employees {
 
         return workedMinutes;
     }
-
 }

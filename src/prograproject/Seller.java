@@ -2,13 +2,10 @@ package prograproject;
 
 public class Seller extends Employees {
 
-    private int soldProducts;
-
     private int bonus;
-
-    private double quantitySold;
-
+    private int soldProducts;
     private double sellerSalary;
+    private double quantitySold;
 
     public Seller(double sellerSalary) {
         this.sellerSalary = sellerSalary;
@@ -101,5 +98,4 @@ public class Seller extends Employees {
     public void setSellerSalary(double sellerSalary) {
         this.sellerSalary = sellerSalary;
     }
-
 }

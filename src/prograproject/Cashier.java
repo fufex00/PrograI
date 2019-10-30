@@ -35,6 +35,5 @@ public class Cashier extends Employees {
      */
     public void setCashierSalary(double cashierSalary) {
         this.cashierSalary = cashierSalary;
-    }
-    
+    }   
 }

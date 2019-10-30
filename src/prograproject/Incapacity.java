@@ -8,8 +8,8 @@ import java.util.Date;
 public class Incapacity {
 
     private int daysOff;
-
     private Date dateOfIncapacity;
+    
 
     public void calculateEndIncapacity() {
     }
@@ -48,6 +48,5 @@ public class Incapacity {
      */
     public void setDateOfIncapacity(Date dateOfIncapacity) {
         this.dateOfIncapacity = dateOfIncapacity;
-    }
-    
+    }    
 }

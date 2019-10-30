@@ -6,14 +6,15 @@ import java.io.InputStreamReader;
 
 public class Principal {
 
-    public static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    public static int counter = 0;
+    public static int[] workedhours = new int[30];
     public static Administrator admin = new Administrator("admin", "pass1");
     public static Boss boss = new Boss();
+    public static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     public static Employees emp = new Employees();
     public static Employees[] employeeData = new Employees[30];
-    public static int[] workedhours = new int[30];
-    public static int counter = 0;
-
+    
+//Ventana principal de la verdulería
     public static void main(String[] args) throws IOException {
         System.out.println("**********************************");
         System.out.println("*   Bienvenido a la Verduleria   *");
@@ -21,7 +22,8 @@ public class Principal {
         System.out.println("");
         login();
     }
-
+    
+//Método de registro de credenciales para Empleado.
     public static void login() throws IOException {
         System.out.println("Ingrese su ID: ");
         String user = br.readLine();
@@ -33,8 +35,8 @@ public class Principal {
 
         verifyLogin(user, pass);
     }
-//este metodo se encargar de designar que tipo de empleado es para ir a su respectivo modulo
-
+    
+//Este método se encarga de designar qué tipo de Empleado es para ir a su respectivo módulo.
     private static void verifyLogin(String user, String password) throws IOException {
         if (employeeData != null) {
             if ((admin.getUser().equals(user)) && (admin.getPassword().equals(password))) {

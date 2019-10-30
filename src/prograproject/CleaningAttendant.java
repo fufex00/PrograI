@@ -34,6 +34,5 @@ public class CleaningAttendant extends Employees {
      */
     public void setCleaningSalary(double cleaningSalary) {
         this.cleaningSalary = cleaningSalary;
-    }
-    
+    }    
 }
