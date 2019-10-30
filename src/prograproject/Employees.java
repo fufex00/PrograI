@@ -171,14 +171,16 @@ public class Employees {
     @Override
     public String toString() {
         return "Employees{" + "name=" + name + ", ID=" + ID + ", workedHours=" + workedHours + ", salary=" + salary + ", allDeductions=" + allDeductions + '}';
-    }  
+    }
+    
+//Método de Empleado, permite ciertas acciones a realizar por los Empleados. 
     public void employeeMenu(String user, String password) throws IOException {
         System.out.println("Bienvenido(a) al Menú de Empleado " + searchEmployee(user)
                 .getName());
         System.out.println("******************************\n");
         System.out.println("1. Marcar hora de entrada");
-        System.out.println("2. Marcar hora de salida");
-        System.out.println("3. Cambiar contraseña");
+        System.out.println("2. Marcar hora de salida");//Acciones que pueden 
+        System.out.println("3. Cambiar contraseña");//realizar los Empleados.
         System.out.println("4. Ver horas trabajadas");
         System.out.println("5. Salir");
         int selec;
@@ -200,6 +202,8 @@ public class Employees {
                     searchEmployee(user).setWorkedHours(calculateHoursInt());
                     employeeMenu(user, password);
                     break;
+                    
+                //Caso para cambiar la contraseña del Empleado, función propia.    
                 case 3:
                     System.out.println("Ingrese su contraseña actual:");
                     String pass = br.readLine();
@@ -209,7 +213,7 @@ public class Employees {
                         searchEmployee(user).setPassword(newPass);
                         employeeMenu(user, password);
                     }
-                    System.out.println("La contraseña es incorrecta, intentelo otra vez");
+                    System.out.println("La contraseña es incorrecta, inténtelo otra vez");
                     employeeMenu(user, password);
                     break;
                 case 4:
@@ -227,7 +231,7 @@ public class Employees {
                     }
                     break;
                 default:
-                    System.out.println("No ingreso un valor adecuado, intentelo de nuevo.\n");
+                    System.out.println("No ingresó un valor adecuado, inténtelo de nuevo.\n");
                     employeeMenu(user, password);
             }
         } catch (NumberFormatException rr) {
@@ -235,6 +239,8 @@ public class Employees {
             employeeMenu(user, password);
         }
     }
+    
+//Método que funciona para buscar Empleado y retornarlo si existe.
     private Employees searchEmployee(String user) {
         for (int i = 0; i < data.getCounter() && Principal.employeeData[i] != null; i++) {
             if (Principal.employeeData[i].getID().equals(user)) {
@@ -242,11 +248,12 @@ public class Employees {
                 found = Principal.employeeData[i];
                 return found;
             }
-
         }
         return null;
     }
-    public void ShowData( int id,Double salario,int hours,String ocupation ){
+    
+//Mostrar los datos de los Empleados que fueron registrados.
+    public void showData( int id,Double salario,int hours,String ocupation ){
         salary=salario;
         int salaryhour=0;
         if (ocupation.equals("Boss")){
@@ -276,12 +283,12 @@ public class Employees {
         System.out.println("Salario Neto: "+(salario-(taxes()+CCSS() ))+"\n");
         }
         if (hours<160){
-        System.out.print("Ganancia  por horas Laboradas "+"\n");    
-        System.out.print("Ganancia Bruta: "+ salario+"\n");
+        System.out.print("Bonificación  por horas Laboradas "+"\n");    
+        System.out.print("Bonificación Bruta: "+ salario+"\n");
         System.out.print("Rebajos: "+ taxes()+"\n");
         System.out.print("CCSS: "+ CCSS()+"\n");
         System.out.print("Total Deducciones "+(taxes()+CCSS() )+"\n");
-        System.out.println("Ganancia Neta: "+((salaryhour*hours)-(taxes()+CCSS()))+"\n");
+        System.out.println("Bonificación Neta: "+((salaryhour*hours)-(taxes()+CCSS()))+"\n");
         }
     }
     public Date date = new Date();
@@ -340,7 +347,6 @@ public class Employees {
         outm=0;
         outh=0;
         dayMinutes=0;
-        dayHours=0;
-                
+        dayHours=0;               
     }
-  }
+}

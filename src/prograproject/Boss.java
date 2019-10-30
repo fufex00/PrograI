@@ -4,17 +4,16 @@ import java.io.IOException;
 
 public class Boss extends Employees {
 
-
-    public Principal data = new Principal();
     Administrator ad = new Administrator();
     Employees empData = new Employees();
+    public Principal data = new Principal();
 
     private double bonus;
     private double bossSalary;
 
     public Boss() {
     }
-    
+
     public Boss(double bossSalary) {
         this.bossSalary = bossSalary;
     }
@@ -66,6 +65,7 @@ public class Boss extends Employees {
         this.bonus = bonus;
     }
 
+//Menú de Jefe, permite realizar funciones con los datos del Empleado.
     public void hiring() throws IOException {
         System.out.println("Módulo Jefe");
         System.out.println("***********************\n");
@@ -124,14 +124,15 @@ public class Boss extends Employees {
         }
     }
 
+//Método para añadir un nuevo Empleado.   
     private void addNewEmployee() throws IOException {
         try {
             System.out.println("Módulo agregar nuevo Empleado");
             System.out.println("***********************\n");
-            System.out.println("1. Agregar un nuevo Cajero/a");
-            System.out.println("2. Agregar un nuevo Misceláneo/a");
-            System.out.println("3. Agregar un nuevo Organizador/a");
-            System.out.println("4. Agregar un nuevo Secretario/a");
+            System.out.println("1. Agregar un nuevo Cajero/a");//Tipos de
+            System.out.println("2. Agregar un nuevo Misceláneo/a");//Empleados
+            System.out.println("3. Agregar un nuevo Organizador/a");//que se pueden
+            System.out.println("4. Agregar un nuevo Secretario/a");//agregar.
             System.out.println("5. Agregar un nuevo Vendedor/a");
             System.out.println("6. Regresar");
             int selec = Integer.parseInt(br.readLine());
@@ -165,7 +166,7 @@ public class Boss extends Employees {
                     hiring();
                     break;
                 default:
-                    System.out.println("Los valores ingresados no son correctos");
+                    System.out.println("Los valores ingresados no son correctos\n");
                     addNewEmployee();
                     break;
             }
@@ -175,6 +176,7 @@ public class Boss extends Employees {
         }
     }
 
+//Eliminar a un Empleado.   
     public void removeEmployee() throws IOException {
         try {
             System.out.println("Módulo de Eliminar Empleado");
@@ -204,19 +206,18 @@ public class Boss extends Employees {
                             }
                         }
                     } else {
-                            
-                        
-                    }
 
+                    }
                 }
-                System.out.println("el usuario no existe");
+                System.out.println("el usuario no existe\n");
             }
         } catch (IOException h) {
-            System.out.println("Valores incorrectos, intente otra vez");
+            System.out.println("Valores incorrectos, intente otra vez\n");
             hiring();
         }
     }
 
+//Método para buscar Empleados por medio de su ID    
     private void searchEmployee() throws IOException {
         try {
             System.out.println("Módulo buscar Empleado");
@@ -232,15 +233,15 @@ public class Boss extends Employees {
                         hiring();
                     }
                 }
-                System.out.println("El empleado no existe");
+                System.out.println("El empleado no existe\n");
             }
-
         } catch (IOException i) {
-            System.out.println("Valores incorrectos, intente otra vez");
+            System.out.println("Valores incorrectos, intente otra vez\n");
             hiring();
         }
     }
 
+//Método para modificar los datos de un Empleado.    
     private void modifyEmployee() throws IOException {
         try {
             System.out.println("Módulo de Modificar Empleado");
@@ -313,23 +314,23 @@ public class Boss extends Employees {
                                 hiring();
                                 break;
                             default:
-                                System.out.println("Ingrese un valor adecuado");
+                                System.out.println("Ingrese un valor adecuado\n");
                                 modifyEmployee();
                         }
                     }
                 }
             } else {
-                System.out.println("El usuario no existe");
+                System.out.println("El usuario no existe\n");
             }
-
         } catch (IOException j) {
-            System.out.println("Valores incorrectos, intente otra vez");
+            System.out.println("Valores incorrectos, intente otra vez\n");
             hiring();
         }
     }
 
+//Imprimir una lista con los Empleados ya guardados o registrados.    
     public void printEmployeelist() throws IOException {
-        
+
         for (int i = 0; i < data.getCounter(); i++) {
             System.out.println("Posición : " + Principal.employeeData[i].getClass().getSimpleName());
             System.out.println("Nombre: " + Principal.employeeData[i].getName());
@@ -337,26 +338,20 @@ public class Boss extends Employees {
             System.out.println("Dirección: " + Principal.employeeData[i].getAdress());
             System.out.println("# de teléfono: " + Principal.employeeData[i].getPhoneNumber());
             System.out.println("***********************\n");
-                
-                
-            
         }
-        
-
     }
 
+//Método que imprime la planilla de Empledos con sus datos y salario respectivos.   
     private void printPayroll() {
         for (int i = 0; i < data.getCounter(); i++) {
             System.out.println("Posición : " + Principal.employeeData[i].getClass().getSimpleName());
             System.out.println("Nombre: " + Principal.employeeData[i].getName());
             System.out.println("ID: " + Principal.employeeData[i].getID());
             System.out.println("Horas trabajadas: " + Principal.employeeData[i].getWorkedHours());
-            ShowData( Integer.parseInt(Principal.employeeData[i].getID()),Principal.employeeData[i].getSalary(),
-            Principal.employeeData[i].getWorkedHours() ,Principal.employeeData[i].getClass().getSimpleName() );
-           
-            
+            showData(Integer.parseInt(Principal.employeeData[i].getID()), Principal.employeeData[i].getSalary(),
+                    Principal.employeeData[i].getWorkedHours(), Principal.employeeData[i].getClass().getSimpleName());
+
             System.out.println("***********************\n");
         }
     }
-
 }
