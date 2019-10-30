@@ -23,7 +23,7 @@ public class Principal {
         login();
     }
     
-//Método de registro de credenciales para Empleado.
+//Método que recibe los credenciales de los empleados
     public static void login() throws IOException {
         System.out.println("Ingrese su ID: ");
         String user = br.readLine();
