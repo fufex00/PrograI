@@ -17,7 +17,7 @@ public class Principal {
 //Ventana principal de la verdulería
     public static void main(String[] args) throws IOException {
         System.out.println("**********************************");
-        System.out.println("*   Bienvenido a la Verduleria   *");
+        System.out.println("*   Bienvenido a la Verdulería   *");
         System.out.println("**********************************");
         System.out.println("");
         login();
