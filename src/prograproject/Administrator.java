@@ -59,14 +59,13 @@ public class Administrator extends Employees {
     public void setPassword(String password) {
         this.password = password;
     }
-    
-//Este método funciona para mostrar las opciones posibles que se pueden realizar con los Empleados.
+
     public void editFields() throws IOException {
         System.out.println("Administrador");
         System.out.println("***********************\n");
         System.out.println("1. Insertar nuevo Empleado");
         System.out.println("2. Eliminar Empleado");
-        System.out.println("3. Buscar Empleado");                               //Menú de Administrador que permite realizar acciones con los Empleados.
+        System.out.println("3. Buscar Empleado");
         System.out.println("4. Modificar Empleado");
         System.out.println("5. Ver lista de Empleados");
         System.out.println("6. Precargar datos");
@@ -101,7 +100,7 @@ public class Administrator extends Employees {
                 case 7:
                     try {
                         System.out.println("Cerrando Sesión...");
-                        Thread.sleep(500);                                      //Cierre de sesión principal.
+                        Thread.sleep(500);
                         Principal.login();
                     } catch (InterruptedException ex) {
                         System.err.println("Hubo un error.");
@@ -115,15 +114,14 @@ public class Administrator extends Employees {
             System.out.println("Los valores ingresados no son correctos 111");
         }
     }
-    
-//Módulo que muestra un menú para agregar un nuevo Empleado.
+
     private void addNewEmployee() throws IOException {
         System.out.println("Módulo agregar nuevo Empleado");
         System.out.println("***********************\n");
         System.out.println("1. Agregar un nuevo Jefe(a)");
         System.out.println("2. Agregar un nuevo Cajero(a)");
         System.out.println("3. Agregar un nuevo Misceláneo(a)");
-        System.out.println("4. Agregar un nuevo Organizador(a)");               //Tipos de Empleados que se pueden agregar.
+        System.out.println("4. Agregar un nuevo Organizador(a)");
         System.out.println("5. Agregar un nuevo Secretario(a)");
         System.out.println("6. Agregar un nuevo Vendedor(a)");
         System.out.println("7. Regresar");
@@ -173,171 +171,280 @@ public class Administrator extends Employees {
             System.out.println("Los valores ingresados no son correctos");
             addNewEmployee();
         }
+
     }
     
-//Agregar Jefe.
+
     private Employees addNewBoss() throws IOException {
         Employees boss = new Boss(400000);
+        String name;
+        String id;
+        String pass;
+        String addr;
+        String phoneNum;
+        do{
         System.out.println("Ingrese el nombre del nuevo Jefe(a)");
-        String name = br.readLine();
+        name = br.readLine();
+        }while(name.equals(""));
         boss.setName(name);
+        
+        do{
         System.out.println("Digite el ID");
-        String id = br.readLine().toLowerCase();
+        id = br.readLine().toLowerCase();
         while (verifyTakenUser(id)) {
-            System.out.println("Este ID ya fue utilizado, ingrese otro: ");     //Ciclo para verificar la existencia de algún ID igual.
+            System.out.println("Este ID ya fue utilizado, ingrese otro: ");
             id = br.readLine();
             verifyTakenUser(id);
         }
+        }while(id.equals(""));
         boss.setID(id);
+        
+        do{
         System.out.println("Ingrese la contraseña");
-        String pass = br.readLine();
+        pass = br.readLine();
+        }while(pass.equals(""));
         boss.setPassword(pass);
+        
+        do{
         System.out.println("Ingrese la dirección");
-        String addr = br.readLine();
+        addr = br.readLine();
+        }while(addr.equals(""));
         boss.setAdress(addr);
+        
+        do{
         System.out.println("Ingrese el número de teléfono");
-        String phoneNum = br.readLine();
+        phoneNum = br.readLine();
+        }while(phoneNum.equals(""));
         boss.setPhoneNumber(phoneNum);
         System.out.println("Jefe creado con éxito");
         return boss;
     }
-    
-//Agregar Cajero.
+
     public Employees addNewCashier() throws IOException {
         Employees cashier = new Cashier(224000);
-        System.out.println("Ingrese el nombre del nuevo Cajero(a)");
-        String name = br.readLine();
+        String name;
+        String id;
+        String pass;
+        String addr;
+        String phoneNum;
+        do{
+        System.out.println("Ingrese el nombre del nuevo Jefe(a)");
+        name = br.readLine();
+        }while(name.equals(""));
         cashier.setName(name);
+        
+        do{
         System.out.println("Digite el ID");
-        String id = br.readLine().toLowerCase();
+        id = br.readLine().toLowerCase();
         while (verifyTakenUser(id)) {
-            System.out.println("Este ID ya fue utilizado, ingrese otro: ");     //Ciclo para verificar la existencia de algún ID igual.
+            System.out.println("Este ID ya fue utilizado, ingrese otro: ");
             id = br.readLine();
             verifyTakenUser(id);
         }
+        }while(id.equals(""));
         cashier.setID(id);
+        
+        do{
         System.out.println("Ingrese la contraseña");
-        String pass = br.readLine();
+        pass = br.readLine();
+        }while(pass.equals(""));
         cashier.setPassword(pass);
+        
+        do{
         System.out.println("Ingrese la dirección");
-        String addr = br.readLine();
+        addr = br.readLine();
+        }while(addr.equals(""));
         cashier.setAdress(addr);
+        
+        do{
         System.out.println("Ingrese el número de teléfono");
-        String phoneNum = br.readLine();
+        phoneNum = br.readLine();
+        }while(phoneNum.equals(""));
         cashier.setPhoneNumber(phoneNum);
-        System.out.println("Cajero(a) creado(a) con éxito");
+        System.out.println("Cajero/a creado/a con éxito");
         return cashier;
     }
-    
-//Agregar Misceláneo.
+
     public Employees addNewCleaningAttend() throws IOException {
         Employees cleaningAtt = new CleaningAttendant(200000);
-        System.out.println("Ingrese el nombre del nuevo Misceláneo(a)");
-        String name = br.readLine();
+        String name;
+        String id;
+        String pass;
+        String addr;
+        String phoneNum;
+        do{
+        System.out.println("Ingrese el nombre del nuevo Jefe(a)");
+        name = br.readLine();
+        }while(name.equals(""));
         cleaningAtt.setName(name);
+        
+        do{
         System.out.println("Digite el ID");
-        String id = br.readLine().toLowerCase();
+        id = br.readLine().toLowerCase();
         while (verifyTakenUser(id)) {
-            System.out.println("Este ID ya fue utilizado, ingrese otro: ");     //Ciclo para verificar la existencia de algún ID igual.
+            System.out.println("Este ID ya fue utilizado, ingrese otro: ");
             id = br.readLine();
             verifyTakenUser(id);
         }
+        }while(id.equals(""));
         cleaningAtt.setID(id);
+        
+        do{
         System.out.println("Ingrese la contraseña");
-        String pass = br.readLine();
+        pass = br.readLine();
+        }while(pass.equals(""));
         cleaningAtt.setPassword(pass);
+        
+        do{
         System.out.println("Ingrese la dirección");
-        String addr = br.readLine();
+        addr = br.readLine();
+        }while(addr.equals(""));
         cleaningAtt.setAdress(addr);
+        
+        do{
         System.out.println("Ingrese el número de teléfono");
-        String phoneNum = br.readLine();
+        phoneNum = br.readLine();
+        }while(phoneNum.equals(""));
         cleaningAtt.setPhoneNumber(phoneNum);
-        System.out.println("Misceláneo(a) creado(a) con éxito");
+        System.out.println("Misceláneo creado con éxito");
         return cleaningAtt;
     }
-    
-//Agregar Organizador.
+
     public Employees addNewOrganizer() throws IOException {
         Employees organizer = new Organizer(244000);
-        System.out.println("Ingrese el nombre del nuevo Organizador(a)");       
-        String name = br.readLine();
+        String name;
+        String id;
+        String pass;
+        String addr;
+        String phoneNum;
+        do{
+        System.out.println("Ingrese el nombre del nuevo Jefe(a)");
+        name = br.readLine();
+        }while(name.equals(""));
         organizer.setName(name);
+        
+        do{
         System.out.println("Digite el ID");
-        String id = br.readLine().toLowerCase();
+        id = br.readLine().toLowerCase();
         while (verifyTakenUser(id)) {
-            System.out.println("Este ID ya fue utilizado, ingrese otro: ");     //Ciclo para verificar la existencia de algún ID igual.
+            System.out.println("Este ID ya fue utilizado, ingrese otro: ");
             id = br.readLine();
             verifyTakenUser(id);
         }
+        }while(id.equals(""));
         organizer.setID(id);
-        System.out.println("Ingrese la contraseña");                            
-        String pass = br.readLine();
+        
+        do{
+        System.out.println("Ingrese la contraseña");
+        pass = br.readLine();
+        }while(pass.equals(""));
         organizer.setPassword(pass);
-        System.out.println("Ingrese la dirección");                             
-        String addr = br.readLine();
+        
+        do{
+        System.out.println("Ingrese la dirección");
+        addr = br.readLine();
+        }while(addr.equals(""));
         organizer.setAdress(addr);
-        System.out.println("Ingrese el número de teléfono");                    
-        String phoneNum = br.readLine();
+        
+        do{
+        System.out.println("Ingrese el número de teléfono");
+        phoneNum = br.readLine();
+        }while(phoneNum.equals(""));
         organizer.setPhoneNumber(phoneNum);
-        System.out.println("Organizador(a) creado(a) con éxito");               
+        System.out.println("Organizador creado con éxito");
         return organizer;
     }
-    
-//Agregar Secretaria.
+
     public Employees addNewSecretary() throws IOException {
         Employees secretary = new Secretary(316800);
-        System.out.println("Ingrese el nombre del nuevo Secretario(a)");        
-        String name = br.readLine();
+        String name;
+        String id;
+        String pass;
+        String addr;
+        String phoneNum;
+        do{
+        System.out.println("Ingrese el nombre del nuevo Jefe(a)");
+        name = br.readLine();
+        }while(name.equals(""));
         secretary.setName(name);
-        System.out.println("Digite el ID");                                     
-        String id = br.readLine().toLowerCase();
+        
+        do{
+        System.out.println("Digite el ID");
+        id = br.readLine().toLowerCase();
         while (verifyTakenUser(id)) {
-            System.out.println("Este ID ya fue utilizado, ingrese otro: ");     
+            System.out.println("Este ID ya fue utilizado, ingrese otro: ");
             id = br.readLine();
             verifyTakenUser(id);
         }
+        }while(id.equals(""));
         secretary.setID(id);
-        System.out.println("Ingrese la contraseña");                            
-        String pass = br.readLine();
+        
+        do{
+        System.out.println("Ingrese la contraseña");
+        pass = br.readLine();
+        }while(pass.equals(""));
         secretary.setPassword(pass);
-        System.out.println("Ingrese la dirección");                             
-        String addr = br.readLine();
+        
+        do{
+        System.out.println("Ingrese la dirección");
+        addr = br.readLine();
+        }while(addr.equals(""));
         secretary.setAdress(addr);
-        System.out.println("Ingrese el número de teléfono");                    
-        String phoneNum = br.readLine();
+        
+        do{
+        System.out.println("Ingrese el número de teléfono");
+        phoneNum = br.readLine();
+        }while(phoneNum.equals(""));
         secretary.setPhoneNumber(phoneNum);
-        System.out.println("Secretario(a) creado(a) con éxito");                
+        System.out.println("Secretari(a) creado con éxito");
         return secretary;
     }
-    
-//Agregar Vendedor.
+
     public Employees addNewSeller() throws IOException {
         Employees seller = new Seller(264000);
-        System.out.println("Ingrese el nombre del nuevo Vendedor(a)");          //Recibe un nombre y le es asignado
-        String name = br.readLine();
+        String name;
+        String id;
+        String pass;
+        String addr;
+        String phoneNum;
+        do{
+        System.out.println("Ingrese el nombre del nuevo Jefe(a)");
+        name = br.readLine();
+        }while(name.equals(""));
         seller.setName(name);
-        System.out.println("Digite el ID");                                     //Recibe un ID y le es asignado
-        String id = br.readLine().toLowerCase();
+        
+        do{
+        System.out.println("Digite el ID");
+        id = br.readLine().toLowerCase();
         while (verifyTakenUser(id)) {
-            System.out.println("Este ID ya fue utilizado, ingrese otro: ");     //Ciclo para verificar la existencia de algún ID igual.
+            System.out.println("Este ID ya fue utilizado, ingrese otro: ");
             id = br.readLine();
             verifyTakenUser(id);
         }
+        }while(id.equals(""));
         seller.setID(id);
-        System.out.println("Ingrese la contraseña");                            //Asigna contraseña
-        String pass = br.readLine();
+        
+        do{
+        System.out.println("Ingrese la contraseña");
+        pass = br.readLine();
+        }while(pass.equals(""));
         seller.setPassword(pass);
-        System.out.println("Ingrese la dirección");                             //Asigna dirección
-        String addr = br.readLine();
+        
+        do{
+        System.out.println("Ingrese la dirección");
+        addr = br.readLine();
+        }while(addr.equals(""));
         seller.setAdress(addr);
-        System.out.println("Ingrese el número de teléfono");                    //Asigna Número de teléfono 
-        String phoneNum = br.readLine();
+        
+        do{
+        System.out.println("Ingrese el número de teléfono");
+        phoneNum = br.readLine();
+        }while(phoneNum.equals(""));
         seller.setPhoneNumber(phoneNum);
-        System.out.println("Vendedor(a) creado(a) con éxito");                  //Crea el Empleado con los datos registrados por el usuario.
+        System.out.println("Vendedor(a) creado con éxito");
         return seller;
     }
-    
-//Método que permite eliminar al Empleado.
+
     private void removeEmployee() throws IOException {
         if (Principal.employeeData[0] == null) {
             System.out.println("La lista está vacía");
@@ -352,9 +459,9 @@ public class Administrator extends Employees {
                 } else {
                     for (int i = 0; i < data.getCounter(); i++) {
                         if (id.equals(Principal.employeeData[i].getID())) {
-                            for (int a = i; a <= data.getCounter(); a++) {      //Este método permite desplazar las posiciones con valor hacía la
-                                if (a == data.getCounter()) {                   //izquierda y la posición nula encontrada, es desplazada justo  
-                                    Principal.employeeData[a] = null;           //después de las posiciones con valor y mostrando esta como vacía.
+                            for (int a = i; a <= data.getCounter(); a++) {
+                                if (a == data.getCounter()) {
+                                    Principal.employeeData[a] = null;
                                     System.out.println("Empleado eliminado con éxito\n");
                                     Principal.decreaseCounter();
                                     editFields();
@@ -371,9 +478,9 @@ public class Administrator extends Employees {
                 editFields();
             }
         }
+
     }
-    
-//Método que funciona para buscar a los  Empleados por medio de su ID.
+
     private void searchEmployee() throws IOException {
         if (Principal.employeeData[0] == null) {
             System.out.println("La lista está vacía");
@@ -393,11 +500,12 @@ public class Administrator extends Employees {
                     }
                 }
                 System.out.println("El Empleado no existe");
+
             }
         }
+
     }
-    
-//Método que permite modificar los datos del Empleado seleccionado.
+
     private void modifyEmployee() throws IOException {
         if (Principal.employeeData[0] == null) {
             System.out.println("La lista está vacía");
@@ -417,7 +525,7 @@ public class Administrator extends Employees {
                             System.out.println("2. ID");
                             System.out.println("3. Dirección");
                             System.out.println("4. # de teléfono");
-                            System.out.println("5. Correo Electrónico");        //Menú que muestra las modificaciones permitidas para el Empleado.
+                            System.out.println("5. Correo Electrónico");
                             System.out.println("6. Contraseña");
                             System.out.println("7. Cancelar");
                             int selec = Integer.parseInt(br.readLine());
@@ -488,9 +596,9 @@ public class Administrator extends Employees {
                 editFields();
             }
         }
+
     }
-    
-//Método que imprime la lista de Empleados que se encuentren guardados o cargados.
+
     private void printEmployeelist() throws IOException {
         if (Principal.employeeData[0] == (null)) {
             System.out.println("La lista está vacía");
@@ -498,7 +606,7 @@ public class Administrator extends Employees {
         } else {
             for (int i = 0; i < data.getCounter() && Principal.employeeData[i] != null; i++) {
                 System.out.println("***********************");
-                System.out.println("Posición: " + Principal.employeeData[i]
+                System.out.println("Posición : " + Principal.employeeData[i]
                         .getClass().getSimpleName());
                 System.out.println("Nombre: " + Principal.employeeData[i].getName());
                 System.out.println("ID: " + Principal.employeeData[i].getID());
@@ -510,8 +618,7 @@ public class Administrator extends Employees {
             }
         }
     }
-    
-//Método que permite Precargar datos de Empleados ya guardados y mostrarlos en pantalla.
+
     public static void preLoad() {
         Employees boss = new Boss("Pepe", "123", "200 noroeste de la "
                 + "municipalidad de Golfito", "86057093", 160, "pepeman@gmail.com",
@@ -521,11 +628,11 @@ public class Administrator extends Employees {
         Employees clean = new CleaningAttendant("Justin", "450", "Barrio Parroquial, "
                 + "Golfito, Puntarenas, Costa "
                 + "Rica", "87463758", 85, "jus_tin342@gmail.com", "424", 106250.00);
-        Principal.employeeData[0] = boss;
+        Principal.employeeData[Principal.counter] = boss;
         Principal.sumCounter();
-        Principal.employeeData[1] = secre;
+        Principal.employeeData[Principal.counter] = secre;
         Principal.sumCounter();
-        Principal.employeeData[2] = clean;
+        Principal.employeeData[Principal.counter] = clean;
         Principal.sumCounter();
         
         System.out.println("Empleados agregados.");
@@ -534,12 +641,11 @@ public class Administrator extends Employees {
 //        System.out.println("salario total");
 //        System.out.println(Principal.employeeData[0].getSalary());
     }
-    
-//Método para comparar que no existan dos ID iguales.
+
     public Boolean verifyTakenUser(String id) {
         for (int i = 0; i < data.getCounter(); i++) {
-            if (id.equals(Principal.employeeData[i].getID())) {                 //Recorre el objeto donde están cargados los empleados
-                return true;                                                    // y compara que el ID ingresado no exista.
+            if (id.equals(Principal.employeeData[i].getID())) {
+                return true;
             }
         }
         return false;
